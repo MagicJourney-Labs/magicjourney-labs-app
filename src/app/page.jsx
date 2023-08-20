@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       <div>MagicJourney Labs</div>
       <Button>
-        <EnvelopeOpenIcon className="mr-2 h-4 w-4" /> Mygtukas
+        <EnvelopeOpenIcon className="mr-2 h-4 w-4" /> Kazkoks Mygtukas
       </Button>
       <Card>
         <Flex gap="3" align="center">
