@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "autoprefixer": "10.4.15",
+    "graphql": "^16.8.0",
+    "graphql-request": "^6.1.0",
     "next": "13.4.17",
+    "next-mdx-remote": "^4.4.1",
     "postcss": "8.4.28",
     "react": "18.2.0",
     "react-dom": "18.2.0",
