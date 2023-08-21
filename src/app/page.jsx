@@ -1,6 +1,7 @@
 import graphQLClient from '@/lib/graphql-client';
 import { gql } from 'graphql-request';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import FeaturedPosts from '@/components/ui/FeaturedPosts';
 
 async function getProjects() {
   const query = gql`
@@ -27,6 +28,7 @@ export default async function Home() {
     <div>
       {" "}
       <div>MagicJourney Labs</div>
+      <FeaturedPosts />
       <div>{projects.heroes[0].heroText}</div>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
