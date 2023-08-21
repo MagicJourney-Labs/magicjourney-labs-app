@@ -1,5 +1,6 @@
 import graphQLClient from '@/lib/graphql-client';
 import { gql } from 'graphql-request';
+import Post from './Post';
 
 async function getPosts() {
   const query = gql`
@@ -28,12 +29,7 @@ const FeaturedPosts = async () => {
   const { posts } = await getPosts();
   return (
     <>
-      {posts.map(post => {
-        return <div key={post.id}>
-          <h2>{post.title}</h2>
-          <p>{post.content.text}</p>
-        </div>
-      })}
+      {posts.map(post => (<Post key={post.id} data={post} />))}
     </>
   )
 }
