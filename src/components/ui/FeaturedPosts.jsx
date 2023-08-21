@@ -1,6 +1,6 @@
-import graphQLClient from '@/lib/graphql-client';
-import { gql } from 'graphql-request';
+import { gql } from '@apollo/client';
 import Post from './Post';
+import { getClient } from '@/lib/client';
 
 async function getPosts() {
   const query = gql`
@@ -21,7 +21,8 @@ async function getPosts() {
   }
   `;
 
-  const data = await graphQLClient.request(query);
+  const client = getClient()
+  const data = await client.query(query);
   return data;
 }
 

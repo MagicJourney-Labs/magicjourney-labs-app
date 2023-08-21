@@ -1,7 +1,7 @@
-import graphQLClient from '@/lib/graphql-client';
-import { gql } from 'graphql-request';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import FeaturedPosts from '@/components/ui/FeaturedPosts';
+import { getClient } from "@/lib/client";
+import { gql } from "@apollo/client";
 
 async function getProjects() {
   const query = gql`
@@ -15,11 +15,11 @@ async function getProjects() {
     }
   }
   `;
-
-  const data = await graphQLClient.request(query);
+const client = getClient()
+  const {data} = await client.query(query);
+  console.log(data)
   return data;
 }
-
 
 
 export default async function Home() {
