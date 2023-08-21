@@ -1,26 +1,29 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import FeaturedPosts from '@/components/ui/FeaturedPosts';
-import { getClient } from "@/lib/client";
+import client from "@/lib/client";
 import { gql } from "@apollo/client";
 
 async function getProjects() {
-  const query = gql`
-  query Heroes {
-    heroes {
-      createdAt
-      heroText
-      id
-      publishedAt
-      updatedAt
-    }
+  try {
+    const result = await client.query({
+      query: gql`
+        query Heroes {
+          heroes {
+            createdAt
+            heroText
+            id
+            publishedAt
+            updatedAt
+          }
+        }
+      `,
+    });
+    return result.data
+  } catch (error) {
+    console.error("Error fetching data:", error)
+    return null
   }
-  `;
-const client = getClient()
-  const {data} = await client.query(query);
-  console.log(data)
-  return data;
 }
-
 
 export default async function Home() {
   const projects = await getProjects();

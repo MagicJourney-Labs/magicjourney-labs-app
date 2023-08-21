@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.0-rc.2",
-    "@apollo/experimental-nextjs-app-support": "^0.4.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "autoprefixer": "10.4.15",
     "class-variance-authority": "^0.7.0",
