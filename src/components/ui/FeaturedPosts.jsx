@@ -1,42 +1,12 @@
-import { gql } from '@apollo/client';
-import Post from './Post';
-import client from '@/lib/client';
+import Post from "./Post";
 
-async function getPosts() {
-  try {
-    const result = await client.query({
-      query: gql`
-      query Posts {
-        posts {
-          createdAt
-          content {
-            text
-          }
-          title
-          publishedAt
-          updatedAt
-          createdBy {
-            name
-          }
-          id
-        }
-      }
-      `,
-    });
-    return result.data
-  } catch (error) {
-    console.error("Error fetching data:", error)
-    return null 
-  }
-}
-
-
-const FeaturedPosts = async () => {
-  const { posts } = await getPosts();
+const FeaturedPosts = async ({ data: posts }) => {
   return (
     <>
-      {posts.map(post => (<Post key={post.id} data={post} />))}
+      {posts.map((post) => (
+        <Post key={post.id} data={post} />
+      ))}
     </>
-  )
-}
-export default FeaturedPosts
+  );
+};
+export default FeaturedPosts;
