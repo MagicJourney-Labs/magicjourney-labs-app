@@ -1,12 +1,11 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import FeaturedPosts from '@/components/ui/FeaturedPosts';
-import client from "@/lib/client";
-import { gql } from "@apollo/client";
+import FeaturedPosts from "@/components/ui/FeaturedPosts";
+import { fetchGraphQL } from "@/lib/graphql-utils";
+
+export const revalidate = 10;
 
 async function getProjects() {
-  try {
-    const result = await client.query({
-      query: gql`
+  const query = `
         query Heroes {
           heroes {
             createdAt
@@ -16,23 +15,44 @@ async function getProjects() {
             updatedAt
           }
         }
-      `,
-    });
-    return result.data
-  } catch (error) {
-    console.error("Error fetching data:", error)
-    return null
+      `;
+
+  const data = await fetchGraphQL(query);
+  return data;
+}
+
+async function getPosts() {
+  const query = `
+  query Posts {
+    posts {
+      createdAt
+      content {
+        text
+      }
+      title
+      publishedAt
+      updatedAt
+      createdBy {
+        name
+      }
+      id
+    }
   }
+`;
+
+  const data = await fetchGraphQL(query);
+  return data;
 }
 
 export default async function Home() {
-  const projects = await getProjects();
+  const { heroes } = await getProjects();
+  const { posts } = await getPosts();
+  console.log(posts);
   return (
     <div>
-      {" "}
       <div>MagicJourney Labs</div>
-      <FeaturedPosts />
-      <div>{projects.heroes[0].heroText}</div>
+      <FeaturedPosts data={posts} />
+      <div>{heroes[0].heroText}</div>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
