@@ -5,7 +5,8 @@ import { Dialog, Popover } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Globe } from 'lucide-react';
 import { Button } from "@/components/ui/Button";
-import Logo from '../../images/mjl-logo_sq.png';
+
+import Image from 'next/image';
 import Link from 'next/link';
 
 function Header() {
@@ -17,7 +18,7 @@ function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img className="h-8 w-auto" src={Logo.src} alt="logo" />
+            <Image src="/mjl-logo_sq.png" alt="logo" width="40" height="40" />
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -63,10 +64,11 @@ function Header() {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img
-                className="h-8 w-auto"
-                src={Logo.src}
+              <Image 
+                src="/mjl-logo_sq.png"
                 alt="logo"
+                width="40"
+                height="40"
               />
             </Link>
             <button
