@@ -1,20 +1,17 @@
 import React from "react";
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Footer() {
   return (
     <footer className=" text-neutral-600 dark:text-neutral-200 lg:text-left">
       <div className="mx-6 py-10 text-center md:text-left">
-        <div className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
-          <p>logo </p>
-          <h3>MagicJourney Labs</h3>
-        </div>
-        <div className="flex items-center justify-between">
-          <div className="">
+        <div className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start"></div>
+        <div className=" flex items-center flex-col p-1 sm:grid grid-cols-2 grid-rows-2 gap-2  lg:flex lg:flex-row lg:items-center lg:justify-between ">
+          <div className="flex flex-col items-center">
+            <Image className="p-1" src="/mjl-logo_sq.png" alt="logo" width="60" height="60" />
             <p>musu moto, ar kita pozityvi mintis</p>
           </div>
-
-          <div className="">
+          <div className="p-5 md:flex flex-col md:items-center lg:items-start">
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">Technologijos</h6>
             <p className="mb-4">
               <Link href="#!" className="text-neutral-600 dark:text-neutral-200">
@@ -37,8 +34,7 @@ export default function Footer() {
               </Link>
             </p>
           </div>
-
-          <div className="">
+          <div className="p-5 md:flex flex-col md:items-center lg:items-start">
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">Informacija</h6>
             <p className="mb-4">
               <Link href="#!" className="text-neutral-600 dark:text-neutral-200">
@@ -61,8 +57,7 @@ export default function Footer() {
               </Link>
             </p>
           </div>
-
-          <div>
+          <div className="p-10 md:flex flex-col md:items-center lg:items-start">
             <p className="mb-4 flex items-center justify-center md:justify-start">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="mr-3 h-5 w-5">
                 <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
@@ -83,8 +78,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      <div className="container pt-9">
+      <div className="pt-1   md:container pt-9">
         <div className="mb-9 flex justify-center">
           <Link href="#!" className="mr-9 text-neutral-800 dark:text-neutral-200">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
