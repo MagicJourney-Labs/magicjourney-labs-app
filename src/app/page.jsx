@@ -1,37 +1,61 @@
-import graphQLClient from '@/lib/graphql-client';
-import { gql } from 'graphql-request';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import FeaturedPosts from '@/components/ui/FeaturedPosts';
+
 import Header from '@/components/ui/header';
+import FeaturedPosts from "@/components/ui/FeaturedPosts";
+import { fetchGraphQL } from "@/lib/graphql-utils";
+
+export const revalidate = 10;
 
 async function getProjects() {
-  const query = gql`
-  query Heroes {
-    heroes {
-      createdAt
-      heroText
-      id
-      publishedAt
-      updatedAt
-    }
-  }
-  `;
+  const query = `
+        query Heroes {
+          heroes {
+            createdAt
+            heroText
+            id
+            publishedAt
+            updatedAt
+          }
+        }
+      `;
 
-  const data = await graphQLClient.request(query);
+  const data = await fetchGraphQL(query);
   return data;
 }
 
+async function getPosts() {
+  const query = `
+  query Posts {
+    posts {
+      createdAt
+      content {
+        text
+      }
+      title
+      publishedAt
+      updatedAt
+      createdBy {
+        name
+      }
+      id
+    }
+  }
+`;
 
+  const data = await fetchGraphQL(query);
+  return data;
+}
 
 export default async function Home() {
-  const projects = await getProjects();
+  const { heroes } = await getProjects();
+  const { posts } = await getPosts();
+  console.log(posts);
   return (
     <div>
-      {" "}
       <Header />
       <div>MagicJourney Labs</div>
-      <FeaturedPosts />
-      <div>{projects.heroes[0].heroText}</div>
+      <FeaturedPosts data={posts} />
+      <div>{heroes[0].heroText}</div>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
