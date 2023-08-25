@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import ApiUtils from "@/lib/api-utils";
 
-export const revalidate = true;
+export const dynamic = "force-dynamic";
 
 export const POST = async (req, res) => {
   const secret = process.env.HYGRAPH_WEBHOOK_SECRET_POSTS;
