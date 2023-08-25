@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 
-import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import ApiUtils from "@/lib/api-utils";
 
-export const dynamic = "force-dynamic";
+export const revalidate = true;
 
 export const POST = async (req, res) => {
   const secret = process.env.HYGRAPH_WEBHOOK_SECRET_POSTS;
@@ -20,7 +20,7 @@ export const POST = async (req, res) => {
   }
 
   try {
-    revalidateTag("posts");
+    revalidatePath("/");
     return new NextResponse({ revalidated: true }, { status: 200 });
   } catch (err) {
     return new NextResponse("Error while revalidating", { status: 500 });
