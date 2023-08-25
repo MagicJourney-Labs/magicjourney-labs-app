@@ -1,16 +1,18 @@
 import { NextResponse } from "next/server";
 
 import { revalidateTag } from "next/cache";
+import ApiUtils from "@/lib/api-utils";
 
 export const revalidate = true;
 
 export const POST = async (request) => {
-  const secret = request.nextUrl.searchParams.get("secret");
-  const tag = request.nextUrl.searchParams.get("tag");
+  const requestBody = await request.json();
 
-  if (secret !== process.env.HYGRAPH_WEBHOOK_SECRET_REVALIDATE) {
+  if (ApiUtils.isSecretValid(requestBody, process.env.HYGRAPH_WEBHOOK_SECRET_REVALIDATE)) {
     return NextResponse.json({ message: "Invalid secret" }, { status: 401 });
   }
+
+  const tag = request.nextUrl.searchParams.get("tag");
 
   if (!tag) {
     return NextResponse.json({ message: "Missing tag param" }, { status: 400 });

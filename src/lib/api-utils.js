@@ -8,8 +8,8 @@ function isSecretValid(requestBody, secret) {
     return false;
   }
 
-  const { sign, env: EnvironmentName, t: Timestamp } = parseSignature(signature);
-  const payload = createPayload(requestBody, EnvironmentName, Timestamp);
+  const { sign, env: environmentName, t: timestamp } = parseSignature(signature);
+  const payload = createPayload(requestBody, environmentName, timestamp);
   const hash = generateHash(payload, secret);
 
   return sign === hash;
