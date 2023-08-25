@@ -1,6 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import FeaturedPosts from "@/components/ui/FeaturedPosts";
 import { fetchGraphQL } from "@/lib/graphql-utils";
+import Link from "next/link";
 
 export const revalidate = 10;
 
@@ -47,9 +48,10 @@ async function getPosts() {
 export default async function Home() {
   const { heroes } = await getProjects();
   const { posts } = await getPosts();
-  console.log(posts);
+
   return (
     <div>
+      <Link href="/about">About</Link>
       <div>MagicJourney Labs</div>
       <FeaturedPosts data={posts} />
       <div>{heroes[0].heroText}</div>
