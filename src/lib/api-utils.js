@@ -15,7 +15,7 @@ function isSecretValid(requestBody, secret) {
   return sign === hash;
 }
 
-export function parseSignature(signature) {
+function parseSignature(signature) {
   const parts = signature.split(", ");
   const parsed = {};
 
