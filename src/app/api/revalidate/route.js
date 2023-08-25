@@ -19,7 +19,7 @@ export const POST = async (request) => {
   }
 
   try {
-    revalidateTag(tag);
+    // revalidateTag(tag);
 
     return new NextResponse({ revalidated: true }, { status: 200 });
   } catch (err) {
