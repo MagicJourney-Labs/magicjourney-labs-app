@@ -47,7 +47,8 @@ async function getPosts() {
 export default async function Home() {
   const { heroes } = await getProjects();
   const { posts } = await getPosts();
-  console.log(posts);
+
+  // console.log(posts);
   return (
     <div>
       <div>MagicJourney Labs</div>
