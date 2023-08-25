@@ -3,7 +3,7 @@ import FeaturedPosts from "@/components/ui/FeaturedPosts";
 import { fetchGraphQL } from "@/lib/graphql-utils";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 async function getProjects() {
   const query = `
