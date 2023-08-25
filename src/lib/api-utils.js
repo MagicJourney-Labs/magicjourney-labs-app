@@ -15,6 +15,18 @@ function isSecretValid(requestBody, secret) {
   return sign === hash;
 }
 
+export function parseSignature(signature) {
+  const parts = signature.split(", ");
+  const parsed = {};
+
+  for (const part of parts) {
+    const [key, value] = part.split("=");
+    parsed[key] = value;
+  }
+
+  return parsed;
+}
+
 function createPayload(bodyReq, EnvironmentName, Timestamp) {
   const body = JSON.stringify(bodyReq);
   return JSON.stringify({
