@@ -3,8 +3,6 @@ import FeaturedPosts from "@/components/ui/FeaturedPosts";
 import { fetchGraphQL } from "@/lib/graphql-utils";
 import Link from "next/link";
 
-export const revalidate = 10;
-
 async function getProjects() {
   const query = `
         query Heroes {
@@ -41,7 +39,7 @@ async function getPosts() {
   }
 `;
 
-  const data = await fetchGraphQL(query);
+  const data = await fetchGraphQL(query, { next: { tags: ["posts"] } });
   return data;
 }
 
