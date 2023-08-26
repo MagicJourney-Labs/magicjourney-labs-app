@@ -2,8 +2,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 import FeaturedPosts from "@/components/ui/FeaturedPosts";
 import { fetchGraphQL } from "@/lib/graphql-utils";
-
-export const revalidate = 10;
+import Link from "next/link";
 
 async function getProjects() {
   const query = `
@@ -41,16 +40,17 @@ async function getPosts() {
   }
 `;
 
-  const data = await fetchGraphQL(query);
+  const data = await fetchGraphQL(query, { next: { tags: ["posts"] } });
   return data;
 }
 
 export default async function Home() {
   const { heroes } = await getProjects();
   const { posts } = await getPosts();
-  console.log(posts);
+
   return (
     <div>
+      <Link href="/about">About</Link>
       <div>MagicJourney Labs</div>
       <FeaturedPosts data={posts} />
       <div>{heroes[0].heroText}</div>
