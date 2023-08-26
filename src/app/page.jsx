@@ -1,6 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-import Header from '@/components/ui/header';
 import FeaturedPosts from "@/components/ui/FeaturedPosts";
 import { fetchGraphQL } from "@/lib/graphql-utils";
 
@@ -52,7 +51,6 @@ export default async function Home() {
   console.log(posts);
   return (
     <div>
-      <Header />
       <div>MagicJourney Labs</div>
       <FeaturedPosts data={posts} />
       <div>{heroes[0].heroText}</div>
