@@ -49,6 +49,7 @@ export default async function Home() {
   return (
     <div>
       <Link href="/about">About</Link>
+      <Link href="/blogs">Blogs</Link>
       <div>MagicJourney Labs</div>
       <FeaturedPosts data={posts} />
       <div>{heroes[0].heroText}</div>
