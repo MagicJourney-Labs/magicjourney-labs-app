@@ -5,11 +5,11 @@ import { createHmac } from 'crypto';
 
 export const revalidate = true;
 
-export const POST = async (request) => {
-  const tag = request.nextUrl.searchParams.get("tag");
-  if (!tag) {
-    return NextResponse.json({ message: "Missing tag param" }, { status: 400 });
-  }
+export const POST = async (req, res) => {
+    const tag = req.nextUrl.searchParams.get("tag");
+    if (!tag) {
+      return NextResponse.json({ message: "Missing tag param" }, { status: 400 });
+    }
 
   const secret = process.env.HYGRAPH_BLOGS_WEBHOOK_KEY
 
