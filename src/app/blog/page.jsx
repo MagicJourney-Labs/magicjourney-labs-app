@@ -20,7 +20,7 @@ async function getBlogs() {
       }
         `;
 
-    const data = await fetchGraphQL(query);
+    const data = await fetchGraphQL(query, { next: { tags: ["blogs"] } });
     return data;
 }
 
