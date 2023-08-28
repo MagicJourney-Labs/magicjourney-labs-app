@@ -1,33 +1,35 @@
 import Blogs from "@/components/ui/Blogs";
+import { fetchGraphQL } from "@/lib/graphql-utils";
 
 async function getBlogs() {
     const query = `
+    query Blogs {
         blogs {
-            createdAt
-            content {
+          createdAt
+          content {
             text
-            }
-            title
-            publishedAt
-            updatedAt
-            createdBy {
+          }
+          title
+          publishedAt
+          updatedAt
+          createdBy {
             name
-            }
-            id
+          }
+          id
         }
-        }
+      }
         `;
 
-    const data = await fetchGraphQL(query, { next: { tags: ["blogs"] } });
+    const data = await fetchGraphQL(query);
     return data;
 }
 
 export default async function BlogsPage() {
-    const { posts } = await getBlogs();
+    const { blogs } = await getBlogs();
     return (
         <div>
             <h1>Blogs</h1>
-            <Blogs data={posts} />
+            <Blogs data={blogs} />
         </div>
     )
 }

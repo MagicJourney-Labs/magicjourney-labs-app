@@ -1,6 +1,7 @@
 export async function fetchGraphQL(query, options = {}) {
   try {
     const response = await fetch(process.env.HYGRAPH_GRAPHQL_URI, {
+
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -8,7 +9,7 @@ export async function fetchGraphQL(query, options = {}) {
       body: JSON.stringify({ query }),
       ...options,
     });
-
+    console.log(query)
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
