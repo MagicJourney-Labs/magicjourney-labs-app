@@ -16,6 +16,7 @@ async function getFooter() {
       footerColumn {
         title
         links {
+          id
           name
           page {
             slug
