@@ -1,5 +1,6 @@
 import Blogs from "@/components/ui/Blogs";
 import { fetchGraphQL } from "@/lib/graphql-utils";
+import Link from "next/link";
 
 async function getBlogs() {
     const query = `
@@ -29,6 +30,8 @@ export default async function BlogsPage() {
     return (
         <div>
             <h1>Blogs</h1>
+            <Link href="/about">About</Link>
+            <Link href="/">Home</Link>
             <Blogs data={blogs} />
         </div>
     )
