@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Footer from "@/components/ui/Footer";
+import Footer from "@/components/ui/FooterMain";
 import { fetchGraphQL } from "@/lib/graphql-utils";
 
 const inter = Inter({ subsets: ["latin"] });

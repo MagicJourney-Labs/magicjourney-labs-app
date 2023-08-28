@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import FooterColumn from "./Footer-column";
+import FooterColumn from "./FooterColumn";
 
 export default async function Footer({ data }) {
   const { footerInfo, copyright, socialMediaIcon, footerColumn } = data;
