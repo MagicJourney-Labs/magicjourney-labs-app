@@ -1,17 +1,56 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
+import "./globals.css";
+import { Inter } from "next/font/google";
+import Footer from "@/components/ui/Footer";
+import { fetchGraphQL } from "@/lib/graphql-utils";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'MagicJourney Labs',
-  description: 'team website',
+  title: "MagicJourney Labs",
+  description: "team website",
+};
+async function getFooter() {
+  const query = `
+  query Footer {
+    footer(where: {id: "cllnuerfg02wo0bmmv8d3wnvq"}) {
+      footerColumn {
+        title
+        links {
+          name
+        }
+      }
+      socialMediaIcon {
+        url
+        image {
+          url
+        }
+      }
+      footerInfo {
+        image {
+          url
+        }
+        name
+        description
+      }
+      copyright {
+        text
+      }
+    }
+  }
+  `;
+  const data = await fetchGraphQL(query);
+  return data;
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const { footer } = await getFooter();
+
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="h-full">
+      <body className={inter.className + " flex min-h-full flex-col"}>
+        {children}
+        <Footer data={footer} />
+      </body>
     </html>
-  )
+  );
 }
