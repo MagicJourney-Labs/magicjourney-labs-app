@@ -1,9 +1,33 @@
-import React from 'react'
+import Blogs from "@/components/ui/Blogs";
 
-const Blog = () => {
-  return (
-    <div>Blog</div>
-  )
+async function getBlogs() {
+    const query = `
+        blogs {
+            createdAt
+            content {
+            text
+            }
+            title
+            publishedAt
+            updatedAt
+            createdBy {
+            name
+            }
+            id
+        }
+        }
+        `;
+
+    const data = await fetchGraphQL(query, { next: { tags: ["blogs"] } });
+    return data;
 }
 
-export default Blog
+export default async function BlogsPage() {
+    const { posts } = await getBlogs();
+    return (
+        <div>
+            <h1>Blogs</h1>
+            <Blogs data={posts} />
+        </div>
+    )
+}
