@@ -17,6 +17,9 @@ async function getFooter() {
         title
         links {
           name
+          page {
+            slug
+          }
         }
       }
       socialMediaIcon {

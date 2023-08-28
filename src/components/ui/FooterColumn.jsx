@@ -6,13 +6,14 @@ const FooterColumn = async ({ data: column }) => {
     <div className="flex flex-col items-start gap-4">
       <h6 className="uppercase text-[14px]">{column.title}</h6>
       <div className="flex flex-col items-start gap-3 self-stretch">
-        {column.links.map((link) => (
-          <p key={link.slug} className="">
-            <Link href={`${link.slug}`} className="text-neutral-600 dark:text-neutral-200">
+        {column.links.map((link) => {
+          return (
+          <p key={link.page ? link.page.slug : null} className="">
+            <Link href={`${link.page ? link.page.slug : null}`} className="text-neutral-600 dark:text-neutral-200">
               {link.name}
             </Link>
           </p>
-        ))}
+        )})}
       </div>
     </div>
   );
