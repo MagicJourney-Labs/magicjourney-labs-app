@@ -8,8 +8,8 @@ const FooterColumn = async ({ data: column }) => {
       <div className="flex flex-col items-start gap-3 self-stretch">
         {column.links.map((link) => {
           return (
-          <p key={link.page ? link.page.slug : null} className="">
-            <Link href={`${link.page ? link.page.slug : null}`} className="text-neutral-600 dark:text-neutral-200">
+          <p key={link.name} className="">
+            <Link href={`${link.page ? link.page.slug : "#"}`} className="text-neutral-600 dark:text-neutral-200">
               {link.name}
             </Link>
           </p>
