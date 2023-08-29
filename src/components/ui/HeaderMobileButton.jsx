@@ -1,7 +1,7 @@
 'use client'
 
 import { Bars3Icon } from '@heroicons/react/24/outline';
-import { useMobileMenuContext } from '../../app/HeaderContext';
+import { useMobileMenuContext } from './MobileMenuProvider';
 
 const HeaderMobileButton = () => {
     const { openMobileMenu } = useMobileMenuContext();

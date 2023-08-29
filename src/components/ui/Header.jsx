@@ -8,8 +8,7 @@ import HeaderDialog from './HeaderDialog';
 import HeaderMobileButton from './HeaderMobileButton';
 
 function Header({ data }) {
-  console.log(data)
-  const { headerLogo, headerLink, headerLogIn } = data;
+  const { headerLogo, headerLinks, headerLogIn } = data;
 
   return (
     <header className="bg-white">
@@ -23,8 +22,8 @@ function Header({ data }) {
 
         <HeaderMobileButton />
         
-        {headerLink.map(data => (
-          <HeaderPopover data={data} />
+        {headerLinks.map(data => (
+          <HeaderPopover key={data.id} data={data.links} />
         ))}
        
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -38,9 +37,7 @@ function Header({ data }) {
         </div>
       </nav>
 
-      {headerLink.map(data => (
-        <HeaderDialog data={data} company={headerLogo} logIn={headerLogIn} />   
-        ))}
+      <HeaderDialog data={data} />  
 
     </header>
   )

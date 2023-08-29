@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Header from '@/components/ui/Header'
-import { MobileMenuProvider } from './HeaderContext'
+import { MobileMenuProvider } from '../components/ui/MobileMenuProvider'
 import Footer from "@/components/ui/FooterMain";
 import { fetchGraphQL } from "@/lib/graphql-utils";
 
@@ -58,7 +58,8 @@ async function getHeader() {
           url
         }
       }
-      headerLink {
+      headerLinks {
+        id
         links {
           id
           name
@@ -72,7 +73,7 @@ async function getHeader() {
       }
     }
   }  
-  `
+  `;
   const data = await fetchGraphQL(query);
   return data;
 }
