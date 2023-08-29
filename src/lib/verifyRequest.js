@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { createHmac } from 'crypto';
 
-export const verifyRequest = (req, secretKey, signature) => {
-    console.log("secretKey in verify" + secretKey)
-    console.log("signature in verify" + signature)
+export const verifyRequest = async (req, secretKey, signature) => {
+    const bodyReq = await req.json()
+    const body = JSON.stringify(bodyReq)
     if (!signature) {
         return new NextResponse("Signature missing", { status: 401 });
     }
@@ -14,7 +14,7 @@ export const verifyRequest = (req, secretKey, signature) => {
     const Timestamp = parseInt(rawTimestamp.replace('t=', ''));
 
     const payload = JSON.stringify({
-        Body: req.body,
+        Body: body,
         EnvironmentName,
         TimeStamp: Timestamp,
     });
