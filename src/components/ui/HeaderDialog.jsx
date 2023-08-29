@@ -17,7 +17,7 @@ const HeaderDialog = ({ data: links, company, logIn }) => {
         <Link href="/" className="-m-1.5 p-1.5">
           <span className="sr-only">{company.name}</span>
           <Image 
-            src="/mjl-logo_sq.png"
+            src={`${company.logo.url}`}
             alt="logo"
             width="40"
             height="40"

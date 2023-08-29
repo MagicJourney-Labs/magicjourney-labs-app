@@ -8,6 +8,7 @@ import HeaderDialog from './HeaderDialog';
 import HeaderMobileButton from './HeaderMobileButton';
 
 function Header({ data }) {
+  console.log(data)
   const { headerLogo, headerLink, headerLogIn } = data;
 
   return (
@@ -16,7 +17,7 @@ function Header({ data }) {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">{headerLogo.name}</span>
-            <Image src="/mjl-logo_sq.png" alt="logo" width="40" height="40" />
+            <Image src={`${headerLogo.logo.url}`} alt="logo" width="40" height="40" />
           </Link>
         </div>
 

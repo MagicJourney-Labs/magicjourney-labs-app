@@ -54,6 +54,9 @@ async function getHeader() {
     header(where: {id: "cllvx2agv4q410blf7pae0erf"}) {
       headerLogo {
         name
+        logo {
+          url
+        }
       }
       headerLink {
         links {
