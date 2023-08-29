@@ -23,7 +23,7 @@ function Header({ data }) {
         <HeaderMobileButton />
         
         {headerLinks.map(data => (
-          <HeaderPopover key={data.id} data={data.links} />
+          <HeaderPopover key={data.id} links={data.links} />
         ))}
        
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
