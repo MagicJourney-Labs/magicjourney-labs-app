@@ -3,7 +3,7 @@ import { revalidateTag } from "next/cache";
 import { verifyRequest } from "./verifyRequest";
 
 export const processRequest = async (req, secretKey, signatureHeader) => {
-    const verificationResult = verifyRequest(req, secretKey, signatureHeader);
+    const verificationResult = await verifyRequest(req, secretKey, signatureHeader);
   console.log(verificationResult)
   if (!verificationResult) {
     return new NextResponse("Invalid token error", { status: 401 });
