@@ -5,9 +5,9 @@ import { verifyRequest } from "./verifyRequest";
 export const processRequest = async (req, secretKey) => {
   const verificationResult = verifyRequest(req, secretKey);
   
-  if (verificationResult) {
-    return verificationResult; 
-  }
+  if (!verificationResult) {
+    return new NextResponse("Invalid token error", { status: 401 });
+}
 
   const tag = req.nextUrl.searchParams.get("tag");
   if (!tag) {
