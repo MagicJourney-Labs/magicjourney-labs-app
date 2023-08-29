@@ -3,8 +3,6 @@ import { revalidateTag } from "next/cache";
 import { headers } from "next/headers";
 import { createHmac } from 'crypto';
 
-export const revalidate = true;
-
 export const verifyAndProcessRequest = async (req, secretKey) => {
   const tag = req.nextUrl.searchParams.get("tag");
   if (!tag) {
