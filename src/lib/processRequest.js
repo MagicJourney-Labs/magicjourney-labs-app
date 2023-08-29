@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { verifyRequest } from "./verifyRequest";
 
+export const revalidate = true;
+
 export const processRequest = async (req, secretKey, signatureHeader) => {
     const verificationResult = await verifyRequest(req, secretKey, signatureHeader);
     if (!verificationResult) {
