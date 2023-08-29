@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import { headers } from "next/headers";
 import { createHmac } from 'crypto';
 
 export const verifyRequest = (req, secretKey, signature) => {
+    console.log("secretKey in verify" + secretKey)
+    console.log("signature in verify" + signature)
     if (!signature) {
         return new NextResponse("Signature missing", { status: 401 });
     }
