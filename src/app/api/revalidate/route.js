@@ -11,7 +11,7 @@ export const POST = async (req, res) => {
     return NextResponse.json({ message: "Missing tag param" }, { status: 400 });
   }
 
-  const secret = process.env.HYGRAPH_BLOGS_WEBHOOK_KEY
+  const secret = process.env.HYGRAPH_POSTS_WEBHOOK_KEY
 
   const signature = headers().get("gcms-signature");
 
