@@ -21,6 +21,5 @@ export const verifyRequest = async (req, secretKey, signature) => {
 
     const hash = createHmac('sha256', secretKey).update(payload).digest('base64');
     const isValid = sign === hash;
-    console.log(isValid)
     return isValid;
 };
