@@ -6,35 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useMobileMenuContext } from '../../app/HeaderContext';
 
-const data = [
-  {
-    href: '#',
-    title: 'Pradžia',
-    id: 1
-  },
-  {
-    href: '#',
-    title: 'Mūsų darbai',
-    id: 2
-  },
-  {
-    href: '#',
-    title: 'Paslaugos',
-    id: 3
-  },
-  {
-    href: '#',
-    title: 'Naujienos',
-    id: 4
-  },
-  {
-    href: '#',
-    title: 'Kontaktai',
-    id: 5
-  }
-]
-
-const HeaderDialog = () => {
+const HeaderDialog = ({ data: links, company, logIn }) => {
   const { mobileMenu, closeMobileMenu } = useMobileMenuContext();
 
   return (
@@ -43,7 +15,7 @@ const HeaderDialog = () => {
     <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
       <div className="flex items-center justify-between">
         <Link href="/" className="-m-1.5 p-1.5">
-          <span className="sr-only">Your Company</span>
+          <span className="sr-only">{company.name}</span>
           <Image 
             src="/mjl-logo_sq.png"
             alt="logo"
@@ -63,13 +35,13 @@ const HeaderDialog = () => {
       <div className="mt-6 flow-root">
         <div className="-my-6 divide-y divide-gray-500/10">
           <div className="space-y-2 py-6">
-            {data.map(link => (
+            {links.links.map(link => (
               <Link
                 key={link.id}
-                href={link.href}
+                href={`${link.page ? link.page.slug : "#"}`}
                 className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
               >
-              {link.title}
+              {link.name}
               </Link>
             ))}
           </div>
@@ -78,7 +50,7 @@ const HeaderDialog = () => {
               href="#"
               className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
             >
-              Prisijungti
+              {logIn.name}
             </Link>
           </div>
         </div>

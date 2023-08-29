@@ -48,14 +48,41 @@ async function getFooter() {
   return data;
 }
 
+async function getHeader() {
+  const query = `
+  query Header {
+    header(where: {id: "cllvx2agv4q410blf7pae0erf"}) {
+      headerLogo {
+        name
+      }
+      headerLink {
+        links {
+          id
+          name
+          page {
+            slug
+          }
+        }
+      }
+      headerLogIn {
+        name
+      }
+    }
+  }  
+  `
+  const data = await fetchGraphQL(query);
+  return data;
+}
+
 export default async function RootLayout({ children }) {
   const { footer } = await getFooter();
+  const { header } = await getHeader();
 
   return (
     <html lang="en" className="h-full">
       <body className={inter.className + " flex min-h-full flex-col"}>
         <MobileMenuProvider>
-          <Header />
+          <Header data={header} />
         </MobileMenuProvider>
         {children}
         <Footer data={footer} />
