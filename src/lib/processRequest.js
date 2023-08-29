@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { verifyRequest } from "./verifyRequest";
 
-export const processRequest = async (req, secretKey) => {
-  const verificationResult = verifyRequest(req, secretKey);
+export const processRequest = async (req, secretKey, signatureHeader) => {
+    const verificationResult = verifyRequest(req, secretKey, signatureHeader);
   
   if (!verificationResult) {
     return new NextResponse("Invalid token error", { status: 401 });
