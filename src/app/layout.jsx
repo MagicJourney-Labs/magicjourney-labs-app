@@ -1,5 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Header from '@/components/ui/Header'
+import { MobileMenuProvider } from '../components/ui/MobileMenuProvider'
 import Footer from "@/components/ui/FooterMain";
 import { fetchGraphQL } from "@/lib/graphql-utils";
 
@@ -16,7 +18,11 @@ async function getFooter() {
       footerColumn {
         title
         links {
+          id
           name
+          page {
+            slug
+          }
         }
       }
       socialMediaIcon {
@@ -42,12 +48,46 @@ async function getFooter() {
   return data;
 }
 
+async function getHeader() {
+  const query = `
+  query Header {
+    header(where: {id: "cllvx2agv4q410blf7pae0erf"}) {
+      headerLogo {
+        name
+        logo {
+          url
+        }
+      }
+      headerLinks {
+        id
+        links {
+          id
+          name
+          page {
+            slug
+          }
+        }
+      }
+      headerLogIn {
+        name
+      }
+    }
+  }  
+  `;
+  const data = await fetchGraphQL(query);
+  return data;
+}
+
 export default async function RootLayout({ children }) {
   const { footer } = await getFooter();
+  const { header } = await getHeader();
 
   return (
     <html lang="en" className="h-full">
-      <body className={inter.className + " flex min-h-full flex-col"}>
+      <body className={inter.className + " flex min-h-full flex-col max-w-[1200px] mx-auto"}>
+        <MobileMenuProvider>
+          <Header data={header} />
+        </MobileMenuProvider>
         {children}
         <Footer data={footer} />
       </body>
