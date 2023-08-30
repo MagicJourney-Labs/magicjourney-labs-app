@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
-import { verifyRequest } from "./verifyRequest";
+import { verifyRequest } from "@/lib/verifyRequest";
 
 export const revalidate = true;
 

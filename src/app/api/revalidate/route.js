@@ -1,5 +1,5 @@
-import { processRequest } from "@/lib/processRequest";
 import { headers } from "next/headers";
+import { processRequest } from "./processRequest";
 
 export const revalidate = true;
 
