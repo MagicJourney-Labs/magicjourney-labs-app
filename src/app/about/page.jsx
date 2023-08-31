@@ -23,7 +23,7 @@ const About = async () => {
   return (
     <>
       <div>
-        <div>{about.title}</div>
+        <h2>{about.title}</h2>
         <p>{about.content.text}</p>
       </div>
     </>
