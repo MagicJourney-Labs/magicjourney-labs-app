@@ -5,15 +5,13 @@ import { fetchGraphQL } from '@/lib/graphql-utils';
 async function getAbout() {
   const query = `
   query About {
-    abouts {
+    about(where: {id: "cllvcbw9i1xj30bmlgvgcn5tg"}) {
       content {
         text
       }
       title
-      id
     }
   }
-  
   `;
 
   const data = await fetchGraphQL(query);
@@ -21,16 +19,14 @@ async function getAbout() {
 }
 
 const About = async () => {
-  const { abouts } = await getAbout();
+  const { about } = await getAbout();
   return (
     <>
-    <Link href="/">Home</Link>
-      {abouts.map(about => (
-        <div key={(about.id)}>
+      <Link href="/">Home</Link>
+      <div>
         <div>{about.title}</div>
         <p>{about.content.text}</p>
-        </div>
-      ))}
+      </div>
     </>
   );
 };
