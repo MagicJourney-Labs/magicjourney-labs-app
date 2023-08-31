@@ -22,7 +22,6 @@ const About = async () => {
   const { about } = await getAbout();
   return (
     <>
-      <Link href="/">Home</Link>
       <div>
         <div>{about.title}</div>
         <p>{about.content.text}</p>
