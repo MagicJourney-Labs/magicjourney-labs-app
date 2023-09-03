@@ -1,6 +1,5 @@
-import Link from "next/link";
-import React from "react";
-import { fetchGraphQL } from '@/lib/graphql-utils';
+import React from 'react';
+import { fetchGraphQL } from '@/lib/graphqlUtils';
 
 async function getAbout() {
   const query = `

@@ -1,6 +1,6 @@
-import FeaturedPosts from "@/components/ui/FeaturedPosts";
-import { fetchGraphQL } from "@/lib/graphql-utils";
-import Link from "next/link";
+import FeaturedPosts from '@/components/ui/FeaturedPosts';
+import { fetchGraphQL } from '@/lib/graphqlUtils';
+import Link from 'next/link';
 
 async function getProjects() {
   const query = `
@@ -38,7 +38,7 @@ async function getPosts() {
   }
 `;
 
-  const data = await fetchGraphQL(query, { next: { tags: ["posts"] } });
+  const data = await fetchGraphQL(query, { next: { tags: ['posts'] } });
   return data;
 }
 
@@ -47,16 +47,17 @@ export default async function Home() {
   const { posts } = await getPosts();
 
   return (
-
-    <div className="flex  lg:w-full xl:flex  flex-col self-stretch">
-      <main className=" sm:px-8 md:px-8 lg:px-8 w-fit ">
-        <div className="flex  px-8 flex-col items-start gap-12">
-          <Link href="/about">About</Link>
-          <Link href="/blogs">Blogs</Link>
+    <div className='flex  lg:w-full xl:flex  flex-col self-stretch'>
+      <main className=' sm:px-8 md:px-8 lg:px-8 w-fit '>
+        <div className='flex  px-8 flex-col items-start gap-12'>
+          <Link href='/about'>About</Link>
+          <Link href='/blogs'>Blogs</Link>
           <div>MagicJourney Labs</div>
         </div>
         <FeaturedPosts data={posts} />
-        <div className="flex  px-8 flex-col items-start gap-12">{heroes[0].heroText}</div>
+        <div className='flex  px-8 flex-col items-start gap-12'>
+          {heroes[0].heroText}
+        </div>
       </main>
     </div>
   );
