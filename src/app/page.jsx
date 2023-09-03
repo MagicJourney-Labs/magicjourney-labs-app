@@ -47,11 +47,17 @@ export default async function Home() {
   const { posts } = await getPosts();
 
   return (
-    <div>
-      <Link href="/about">About</Link>
-      <div>MagicJourney Labs</div>
-      <FeaturedPosts data={posts} />
-      <div>{heroes[0].heroText}</div>
+
+    <div className="flex  lg:w-full xl:flex  flex-col self-stretch">
+      <main className=" sm:px-8 md:px-8 lg:px-8 w-fit ">
+        <div className="flex  px-8 flex-col items-start gap-12">
+          <Link href="/about">About</Link>
+          <Link href="/blogs">Blogs</Link>
+          <div>MagicJourney Labs</div>
+        </div>
+        <FeaturedPosts data={posts} />
+        <div className="flex  px-8 flex-col items-start gap-12">{heroes[0].heroText}</div>
+      </main>
     </div>
   );
 }
