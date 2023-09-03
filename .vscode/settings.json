@@ -1,0 +1,17 @@
+{
+  "workbench.startupEditor": "none",
+  "git.openRepositoryInParentFolders": "never",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.preferences.quoteStyle": "single",
+  "reactSnippets.settings.importReactOnTop": true,
+  "javascript.suggestionActions.enabled": true,
+  "debug.javascript.resourceRequestOptions": {},
+  "prettier.jsxSingleQuote": true,
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.singleQuote": true,
+  "editor.formatOnType": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+}
