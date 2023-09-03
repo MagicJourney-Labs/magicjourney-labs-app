@@ -1,4 +1,4 @@
-import FeaturedPosts from '@/components/ui/FeaturedPosts';
+import FeaturedPosts from '@/components/ui/Posts';
 import { fetchGraphQL } from '@/lib/graphqlUtils';
 import Link from 'next/link';
 

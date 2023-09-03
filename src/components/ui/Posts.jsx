@@ -1,4 +1,4 @@
-import Post from './Post';
+import Post from './PostItem';
 
 const FeaturedPosts = async ({ data: posts }) => {
   return (
