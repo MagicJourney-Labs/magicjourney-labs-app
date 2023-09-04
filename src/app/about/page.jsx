@@ -1,25 +1,9 @@
-import Link from "next/link";
 import React from "react";
 import { fetchGraphQL } from '@/lib/graphql-utils';
-
-async function getAbout() {
-  const query = `
-  query About {
-    about(where: {id: "cllvcbw9i1xj30bmlgvgcn5tg"}) {
-      content {
-        text
-      }
-      title
-    }
-  }
-  `;
-
-  const data = await fetchGraphQL(query);
-  return data;
-}
+import { mainAbout } from "@/queries/about";
 
 const About = async () => {
-  const { about } = await getAbout();
+  const { about } = await fetchGraphQL(mainAbout);
   return (
     <>
       <div>
