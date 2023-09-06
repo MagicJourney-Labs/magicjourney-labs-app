@@ -3,13 +3,13 @@ const Post = ({ data: post }) => {
 
   return (
     <div className=" group relative flex flex-col items-start">
-      <div className="hover:bg-slate-100 w-1/2 rounded-lg p-4 cursor-pointer">
+      <div className="hover:bg-slate-100 sm:w-1/2  rounded-lg p-4 cursor-pointer">
         <div>
           <span className="text-sm underline underline-offset-8  decoration-slate-800 decoration-2"> {date}</span>
         </div>
         <div className="pt-4">
           <h2 className="font-bold">{post.title}</h2>
-          <p className=" text-justify pt-3 ">{post.content.text}</p>
+          <p className=" text-justify pt-3 text-xs sm:text-base">{post.content.text}</p>
           <div className="flex items-center pt-3">
             <button className="text-grey-500 font-bold ">Skaityti straipsnį</button>
             <div
