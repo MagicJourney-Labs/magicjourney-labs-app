@@ -14,5 +14,5 @@ const allBlogs = `
           id
         }
       }
-        `
-export { allBlogs }
+        `;
+export { allBlogs };

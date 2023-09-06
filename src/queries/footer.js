@@ -29,5 +29,5 @@ query Footer {
     }
   }
 }
-`
-export { mainFooter}
+`;
+export { mainFooter };

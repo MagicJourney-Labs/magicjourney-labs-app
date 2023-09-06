@@ -1,5 +1,4 @@
-import Blog from "./BlogItem";
-
+import Blog from './BlogItem';
 
 const Blogs = async ({ data: blogs }) => {
   return (

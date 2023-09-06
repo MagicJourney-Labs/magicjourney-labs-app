@@ -8,5 +8,5 @@ query Heroes {
     updatedAt
   }
 }
-`
-export { mainHeroes}
+`;
+export { mainHeroes };

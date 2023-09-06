@@ -14,5 +14,5 @@ query Posts {
     id
   }
 }
-`
-export { allPosts}
+`;
+export { allPosts };
