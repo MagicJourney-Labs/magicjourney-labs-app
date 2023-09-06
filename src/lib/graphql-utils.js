@@ -1,12 +1,11 @@
-export async function fetchGraphQL(query, options = {}) {
+export async function fetchGraphQL(query, options = {}, variables = "") {
   try {
     const response = await fetch(process.env.HYGRAPH_GRAPHQL_URI, {
-
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ query }),
+      body: JSON.stringify({ query, ...variables }),
       ...options,
     });
     if (!response.ok) {
