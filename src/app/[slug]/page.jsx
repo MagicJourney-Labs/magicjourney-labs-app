@@ -1,25 +1,13 @@
 import { fetchGraphQL } from "@/lib/graphql-utils"
 import NotFound from "../not-found"
 import { RichText } from "@graphcms/rich-text-react-renderer";
+import { singlePage } from "@/queries/pages";
 
-const query = `
-            query singlePage($slug: String!) {
-                page(where: {slug: $slug}) {
-                  title
-                  slug
-                  id
-                  content {
-                    html
-                    raw
-                  }
-                }
-              }   
-          `
 
 
 export default async function Page({ params }) {
 
-    const { page } = await fetchGraphQL(query, {}, { variables: { slug: params.slug } });
+    const { page } = await fetchGraphQL(singlePage, {}, { variables: { slug: params.slug } });
     if (!page) {
         return NotFound()
     }
@@ -33,7 +21,6 @@ export default async function Page({ params }) {
             <div className="pb-16 lg:pb-20">
                 <div className="prose max-w-none pt-10 pb-8">
                     <RichText content={page.content.raw} />
-                    {/* <div dangerouslySetInnerHTML={{ __html: page.content.html }} /> */}
                 </div>
             </div>
         </div>
