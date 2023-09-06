@@ -51,11 +51,11 @@ export default async function Home() {
     <div className="flex  lg:w-full xl:flex  flex-col self-stretch">
       <main className=" sm:px-8 md:px-8 lg:px-8 w-fit ">
         <div className="flex  px-8 flex-col items-start gap-12">
-          <Link href="/about">About</Link>
-          <div>MagicJourney Labs</div>
+          <Link className="pb-3" href="/about">
+            About
+          </Link>
         </div>
         <FeaturedPosts data={posts} />
-        <div className="flex  px-8 flex-col items-start gap-12">{heroes[0].heroText}</div>
       </main>
     </div>
   );
