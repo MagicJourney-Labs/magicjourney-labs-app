@@ -10,6 +10,6 @@ const singlePage = `
                   }
                 }
               }   
-          `
+          `;
 
-export { singlePage}
+export { singlePage };

@@ -22,5 +22,5 @@ query Header {
     }
   }
 }  
-`
-export { mainHeader}
+`;
+export { mainHeader };
