@@ -22,7 +22,6 @@
     "lucide-react": "^0.268.0",
     "next": "13.4.17",
     "nodemailer": "^6.9.5",
-    "nodemailer-sendgrid-transport": "^0.2.0",
     "postcss": "8.4.28",
     "react": "18.2.0",
     "react-dom": "18.2.0",

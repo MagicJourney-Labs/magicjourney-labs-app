@@ -1,8 +1,7 @@
-"use client"
+'use client';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import FormItem from './FormItem';
-import sendEmail from './sendEmail';
 
 const ContactsForm = () => {
   const validationSchema = Yup.object().shape({
@@ -10,31 +9,40 @@ const ContactsForm = () => {
     email: Yup.string()
       .email('Netinkamas el. pašto adresas.')
       .required('El. paštas yra privalomas.'),
-      phone: Yup.string()
-      .matches(/^(\+370|8)\d{8}$/, 'Netinkamas telefono numeris. Pavyzdys: +370XXXXXXXX arba 8XXXXXXXXX')
+    phone: Yup.string()
+      .matches(
+        /^(\+370|8)\d{8}$/,
+        'Netinkamas telefono numeris. Pavyzdys: +370XXXXXXXX arba 8XXXXXXXXX'
+      )
       .required('Telefono numeris yra privalomas.'),
     message: Yup.string().required('Žinutė yra privaloma.'),
   });
 
   const handleSubmit = async (values, actions) => {
-    // try {
-    //   const response = await sendEmail(values);
-  
-    //   if (response && response.accepted.length > 0) {
-    //     actions.resetForm();
-    //     alert('Forma buvo sėkmingai pateikta.');
-    //   } else {
-    //     alert('Klaida siunčiant formą.');
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    //   alert('Įvyko klaida siunčiant formą.');
-    // }
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        actions.resetForm();
+        alert('Forma buvo sėkmingai pateikta.');
+      } else {
+        throw new Error('Formos siuntimo klaida.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Įvyko klaida siunčiant formą.');
+    }
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-white rounded shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Susisiekite su mumis</h2>
+    <div className='max-w-md mx-auto p-4 bg-white rounded shadow-md'>
+      <h2 className='text-2xl font-semibold mb-4'>Susisiekite su mumis</h2>
       <Formik
         initialValues={{
           name: '',
@@ -46,7 +54,7 @@ const ContactsForm = () => {
         onSubmit={handleSubmit}
       >
         {({ errors, touched }) => (
-         <FormItem errors={errors} touched={touched} />
+          <FormItem errors={errors} touched={touched} />
         )}
       </Formik>
     </div>
