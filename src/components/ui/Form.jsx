@@ -2,6 +2,8 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import FormItem from './FormItem';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ContactsForm = () => {
   const validationSchema = Yup.object().shape({
@@ -30,13 +32,13 @@ const ContactsForm = () => {
 
       if (response.ok) {
         actions.resetForm();
-        alert('Forma buvo sėkmingai pateikta.');
+        toast.success('Forma buvo sėkmingai pateikta.');
       } else {
         throw new Error('Formos siuntimo klaida.');
       }
     } catch (error) {
       console.error(error);
-      alert('Įvyko klaida siunčiant formą.');
+      toast.error('Įvyko klaida siunčiant formą.');
     }
   };
 
