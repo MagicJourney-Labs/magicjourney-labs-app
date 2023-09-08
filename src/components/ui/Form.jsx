@@ -26,7 +26,6 @@ const ContactsForm = () => {
     requiredTexts,
     submissionToastTexts,
   } = contacts.form;
-  console.log(submissionToastTexts);
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(requiredTexts[0].requiredText),
