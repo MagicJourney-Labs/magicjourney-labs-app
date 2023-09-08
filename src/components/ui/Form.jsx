@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 
 const ContactsForm = () => {
   const [contacts, setContacts] = useState('');
-
   useEffect(() => {
     fetch('/api/getFormTexts') // Replace with your API endpoint
       .then((response) => response.json())
