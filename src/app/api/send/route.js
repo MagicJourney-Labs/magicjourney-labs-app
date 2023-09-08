@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 
 export const POST = async (req, res) => {
   if (req.method === 'POST') {
-      const formData = await req.json();
+    const formData = await req.json();
     const transporter = nodemailer.createTransport({
       service: process.env.EMAIL_SERVICE,
       auth: {
@@ -15,7 +15,7 @@ export const POST = async (req, res) => {
     const mailOptions = {
       from: formData.email,
       to: process.env.EMAIL_USER,
-      subject: 'Formos pateikimas',
+      subject: 'Contacts',
       text: `
         Vardas: ${formData.name}
         El. paštas: ${formData.email}
@@ -25,12 +25,12 @@ export const POST = async (req, res) => {
     };
 
     try {
-        await transporter.sendMail(mailOptions);
-        return new NextResponse('El. laiškas išsiųstas sėkmingai', { status: 200 });
+      await transporter.sendMail(mailOptions);
+      return new NextResponse('email sent successfully', { status: 200 });
     } catch (error) {
-        return new NextResponse('Klaida siunčiant el. laišką', { status: 500 });
-      }
+      return new NextResponse('Error sending email', { status: 500 });
+    }
   } else {
-      return new NextResponse('Error', { status: 405 });
+    return new NextResponse('Error', { status: 405 });
   }
 };
