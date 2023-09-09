@@ -1,42 +1,16 @@
 import { fetchGraphQL } from '@/lib/graphqlUtils';
 import Link from "next/link";
 import Image from 'next/image';
-import { Button } from "@/components/ui/Button";
 import { mainHeroes } from '@/queries/heroes';
 import { allPosts } from '@/queries/posts';
+import { home } from '@/queries/home';
+import { Button } from "@/components/ui/Button";
 import FeaturedPosts from '@/components/ui/Posts';
-
-async function getHomePage() {
-  const query = `
-  query HomePage {
-    homePage(where: {id: "clm57jgdgo5l70bmm9tjrmhu3"}) {
-      buttons {
-        name
-        page {
-          slug
-        }
-        id
-      }
-      title
-      paragraphs {
-        html
-      }
-      imageUrl {
-        url
-      }
-      pictureAlt
-    }
-  }
-  `;
-
-  const data = await fetchGraphQL(query);
-  return data;
-}
 
 export default async function Home() {
   const { heroes } = await fetchGraphQL(mainHeroes);
   const { posts } = await fetchGraphQL(allPosts, { next: { tags: ['posts'] } });
-  const { homePage } = await getHomePage();
+  const { homePage } = await fetchGraphQL(home);
   
   function paragraphStr(data) {
     const htmlStr = data.map(item => {
