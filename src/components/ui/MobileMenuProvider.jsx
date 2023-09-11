@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { createContext, useContext, useState } from 'react';
 
@@ -20,9 +20,10 @@ export const MobileMenuProvider = ({ children }) => {
   };
 
   return (
-    <MobileMenuContext.Provider value={{ mobileMenu, openMobileMenu, closeMobileMenu }}>
+    <MobileMenuContext.Provider
+      value={{ mobileMenu, openMobileMenu, closeMobileMenu }}
+    >
       {children}
     </MobileMenuContext.Provider>
   );
 };
-
