@@ -15,7 +15,7 @@ const OurProjects = async () => {
       <div className='mx-auto h-5 text-center text-zinc-600 text-lg font-normal leading-7'>
         {slogan.text}
       </div>
-      <div className='mx-auto mt-12 mb-[8rem] flex flex-wrap justify-center gap-x-5 gap-y-12'>
+      <div className='mx-auto mt-12 mb-20 flex flex-wrap justify-center gap-x-5 gap-y-12'>
         {ourProjectItems.map((item) => {
           return <OurProjectItem key={item.id} data={item} />;
         })}

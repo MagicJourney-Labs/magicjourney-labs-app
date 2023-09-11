@@ -1,16 +1,11 @@
 import { fetchGraphQL } from '@/lib/graphqlUtils';
 import Link from 'next/link';
 import Image from 'next/image';
-import { mainHeroes } from '@/queries/heroes';
-import { allPosts } from '@/queries/posts';
 import { home } from '@/queries/home';
 import { Button } from '@/components/ui/Button';
-import FeaturedPosts from '@/components/ui/Posts';
 import OurProjects from '@/components/ui/OurProjects';
 
 export default async function Home() {
-  const { heroes } = await fetchGraphQL(mainHeroes);
-  const { posts } = await fetchGraphQL(allPosts, { next: { tags: ['posts'] } });
   const { homePage } = await fetchGraphQL(home);
 
   function paragraphStr(data) {
