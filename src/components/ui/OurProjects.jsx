@@ -1,21 +1,24 @@
 import OurProjectItem from './OurProjectItem';
+import { fetchGraphQL } from '@/lib/graphqlUtils';
+import { ourProjectItem } from '@/queries/ourProjectItem';
+import { ourProjects } from '@/queries/ourProjects';
 
-const OurProjects = () => {
+const OurProjects = async () => {
+  const { ourProject } = await fetchGraphQL(ourProjects);
+  const { ourProjectItems } = await fetchGraphQL(ourProjectItem);
+  const { title, slogan } = ourProject[0];
   return (
-    <div className='mx-auto bg-white flex flex-col items-start gap-5 mt-20'>
-      <div className='mx-auto h-10 text-center text-zinc-900 text-[42px] font-bold leading-[48px] mt-4'>
-        Mūsų darbai
+    <div className='mx-auto bg-white flex flex-col items-start gap-4 mt-20'>
+      <div className='mx-auto h-10 text-center text-zinc-900 text-[2.62rem] font-bold leading-10 mt-4'>
+        {title}
       </div>
-      <div className='mx-auto h-[23.31px] text-center text-zinc-600 text-lg font-normal leading-7'>
-        Lorem ipsum dolor sit amet, consectetur adipis elit
+      <div className='mx-auto h-5 text-center text-zinc-600 text-lg font-normal leading-7'>
+        {slogan.text}
       </div>
-      <div className='mx-auto m-[133px] flex flex-wrap justify-center gap-x-3 gap-y-12'>
-        <OurProjectItem />
-        <OurProjectItem />
-        <OurProjectItem />
-        <OurProjectItem />
-        <OurProjectItem />
-        <OurProjectItem />
+      <div className='mx-auto mt-12 mb-[8rem] flex flex-wrap justify-center gap-x-5 gap-y-12'>
+        {ourProjectItems.map((item) => {
+          return <OurProjectItem key={item.id} data={item} />;
+        })}
       </div>
     </div>
   );
