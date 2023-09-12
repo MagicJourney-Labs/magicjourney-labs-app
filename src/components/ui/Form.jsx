@@ -53,7 +53,7 @@ const ContactsForm = () => {
 
       if (response.ok) {
         actions.resetForm();
-        toast.success(':) all goot');
+        toast.success(':) OK');
       } else {
         throw new Error(':( bad');
       }
