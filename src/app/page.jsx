@@ -6,11 +6,14 @@ import { allPosts } from '@/queries/posts';
 import { home } from '@/queries/home';
 import { Button } from '@/components/ui/Button';
 import FeaturedPosts from '@/components/ui/Posts';
+import { allServices } from '@/queries/services';
+import Services from '@/components/ui/Services';
 
 export default async function Home() {
   const { heroes } = await fetchGraphQL(mainHeroes);
   const { posts } = await fetchGraphQL(allPosts, { next: { tags: ['posts'] } });
   const { homePage } = await fetchGraphQL(home);
+  const { aboutCard } = await fetchGraphQL(allServices);
 
   function paragraphStr(data) {
     const htmlStr = data.map((item) => {
@@ -29,8 +32,8 @@ export default async function Home() {
   const paragraphsElement = { __html: `${paragraphs}` };
 
   return (
-    <div className='flex  lg:w-full xl:flex  flex-col self-stretch'>
-      <main className=' sm:px-8 md:px-8 lg:px-8 w-fit '>
+    <div className='flex lg:w-full xl:flex  flex-col self-stretch'>
+      <main className='sm:px-8 md:px-8 lg:px-8 w-fit'>
         <div className='overflow-hidden bg-white py-20 sm:py-32'>
           <div className='mx-auto max-w-7xl px-6 lg:px-8'>
             <div className='mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-10 lg:mx-0 lg:max-w-none lg:grid-cols-2'>
@@ -53,7 +56,8 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div className='flex  px-8 flex-col items-start gap-12'>
+        <Services data={aboutCard} />
+        <div className='flex  px-8 flex-col items-start'>
           <Link href='/about'>About</Link>
           <div>MagicJourney Labs</div>
         </div>
