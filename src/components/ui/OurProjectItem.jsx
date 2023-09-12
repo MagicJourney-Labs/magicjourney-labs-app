@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const OurProjectItem = ({ data }) => {
   return (
-    <div className='flex flex-col bg-white pt-5 pl-5 pr-5 pb-12 gap-3'>
+    <div className='flex flex-col bg-white pt-12 pl-5 pr-5 pb-12 gap-3'>
       <div className='flex justify-center mb-[3rem]'>
         <Image src={data.icon.url} width='44' height='36' alt='icon' />
       </div>
