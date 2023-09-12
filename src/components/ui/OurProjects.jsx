@@ -4,18 +4,18 @@ import { ourProjectItem } from '@/queries/ourProjectItem';
 import { ourProjects } from '@/queries/ourProjects';
 
 const OurProjects = async () => {
-  const { ourProject } = await fetchGraphQL(ourProjects);
+  const { ourProjectsHeader } = await fetchGraphQL(ourProjects);
   const { ourProjectItems } = await fetchGraphQL(ourProjectItem);
-  const { title, slogan } = ourProject[0];
+  const { title, slagon } = ourProjectsHeader;
   return (
-    <div className='mx-auto bg-white flex flex-col items-start gap-4 mt-20'>
+    <div className='mx-auto bg-white flex flex-col content-center gap-4 mt-20'>
       <div className='mx-auto h-10 text-center text-zinc-900 text-[2.62rem] font-bold leading-10 mt-4'>
         {title}
       </div>
       <div className='mx-auto h-5 text-center text-zinc-600 text-lg font-normal leading-7'>
-        {slogan.text}
+        {slagon}
       </div>
-      <div className='mx-auto mt-12 mb-20 flex flex-wrap justify-center gap-x-5 gap-y-12'>
+      <div className='bg-gray-500 mt-16 mb-16 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-[1px]'>
         {ourProjectItems.map((item) => {
           return <OurProjectItem key={item.id} data={item} />;
         })}

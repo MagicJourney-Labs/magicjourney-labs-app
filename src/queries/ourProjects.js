@@ -1,10 +1,8 @@
 const ourProjects = `
-query OurProjects {
-  ourProject(where: {id: "clmeffz16jy230bmhfvwreedi"}) {
+query ourProjectsHeader {
+  ourProjectsHeader(where: {id: "clmgfujsdq1630bmhb8t6ls1x"}) {
     title
-    slogan {
-      text
-    }
+    slagon
   }
 }
   `;
