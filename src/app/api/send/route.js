@@ -1,7 +1,10 @@
+import { fetchGraphQL } from '@/lib/graphqlUtils';
+import { contactsForm } from '@/queries/forms';
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export const POST = async (req, res) => {
+  const { form } = await fetchGraphQL(contactsForm);
   if (req.method === 'POST') {
     const formData = await req.json();
     const transporter = nodemailer.createTransport({
@@ -16,12 +19,11 @@ export const POST = async (req, res) => {
       from: formData.email,
       to: process.env.EMAIL_USER,
       subject: 'Contacts',
-      text: `
-        Vardas: ${formData.name}
-        El. paštas: ${formData.email}
-        Telefono numeris: ${formData.phone}
-        Žinutė: ${formData.message}
-      `,
+      text: form.formFields
+        .map((item) => {
+          return `${item.label} ${formData[item.name]}`;
+        })
+        .join('\n'),
     };
 
     try {
