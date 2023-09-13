@@ -1,11 +1,8 @@
 import OurProjectItem from './OurProjectItem';
-import { fetchGraphQL } from '@/lib/graphqlUtils';
-import { ourProjectItem } from '@/queries/ourProjectItem';
-import { ourProjects } from '@/queries/ourProjects';
 
-const OurProjects = async () => {
-  const { ourProjectsHeader } = await fetchGraphQL(ourProjects);
-  const { ourProjectItems } = await fetchGraphQL(ourProjectItem);
+const OurProjects = async ({
+  data: { ourProjectsHeader, ourProjectItems },
+}) => {
   const { title, slagon } = ourProjectsHeader;
   return (
     <div className='mx-auto bg-white flex flex-col content-center gap-4 mt-20'>
