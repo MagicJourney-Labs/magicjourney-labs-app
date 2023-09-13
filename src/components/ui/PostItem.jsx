@@ -13,7 +13,7 @@ const Post = ({ data: post }) => {
           <div className='flex items-center pt-3'>
             <button className='text-grey-500 font-bold '>Skaityti straipsnį</button>
             <div
-              class='ml-3 w-0 h-0 
+              className='ml-3 w-0 h-0 
   border-t-[7px] border-t-transparent
   border-l-[13px] border-l-slate-800
   border-b-[7px] border-b-transparent'
