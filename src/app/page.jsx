@@ -1,7 +1,6 @@
 import { fetchGraphQL } from '@/lib/graphqlUtils';
 import OurProjects from '@/components/ui/OurProjects';
 import { home } from '@/queries/home';
-import { allServices } from '@/queries/services';
 import HomePage from '@/components/ui/HomePage';
 
 export default async function Home() {
