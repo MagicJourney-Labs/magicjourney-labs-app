@@ -6,6 +6,7 @@ import Footer from '@/components/ui/Footer';
 import { fetchGraphQL } from '@/lib/graphqlUtils';
 import { mainFooter } from '@/queries/footer';
 import { mainHeader } from '@/queries/header';
+import { ToastContainer } from 'react-toastify';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,6 +26,7 @@ export default async function RootLayout({ children }) {
           inter.className + ' flex min-h-full flex-col max-w-[1200px] mx-auto'
         }
       >
+        <ToastContainer />
         <MobileMenuProvider>
           <Header data={header} />
         </MobileMenuProvider>
