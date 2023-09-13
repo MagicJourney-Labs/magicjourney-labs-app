@@ -11,7 +11,7 @@ function Header({ data }) {
   const { headerLogo, headerLinks, headerLogIn } = data;
 
   return (
-    <header className='bg-white border-t-2 border-t-gray-400 border-b-2 border-b-gray-400'>
+    <header className='bg-white border-b-2 border-b-gray-400'>
       <nav
         className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8'
         aria-label='Global'
