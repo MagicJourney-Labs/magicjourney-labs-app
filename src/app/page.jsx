@@ -16,7 +16,7 @@ export default async function Home() {
 
   return (
     <div className='flex  lg:w-full xl:flex  flex-col self-stretch'>
-      <main className=''>
+      <main>
         <HomePage data={homePage} />
         <OurProjects data={ourProjectsData} />
         <Services data={aboutCard} />

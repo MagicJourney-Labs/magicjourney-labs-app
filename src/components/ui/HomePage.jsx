@@ -21,7 +21,7 @@ const HomePage = ({ data }) => {
 
   return (
     <div className='overflow-hidden  bg-zinc-50 py-20 sm:py-32'>
-      <div className='mx-auto max-w-7xl px-6 lg:px-8'>
+      <div className='mx-auto max-w-7xl px-6 lg:px-10'>
         <div className='mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-10 lg:mx-0 lg:max-w-none lg:grid-cols-2'>
           <div className='lg:pr-8 lg:pt-4'>
             <div className='lg:max-w-lg'>

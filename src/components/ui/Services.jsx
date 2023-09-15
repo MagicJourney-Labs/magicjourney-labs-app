@@ -3,7 +3,7 @@ import Image from 'next/image';
 const Services = async ({ data }) => {
   return (
     <div className='pt-20 pb-20 bg-zinc-50'>
-      <div className='px-10 flex flex-col items-center mx-auto max-w-7xl  lg:px-8'>
+      <div className='px-10 flex flex-col items-center mx-auto max-w-7xl  lg:px-10'>
         <h1 className='text-[30px] pb-6 sm:text-[36px] font-bold sm:pb-20'>{data.title}</h1>
         <div className='grid md:grid-cols-2  gap-x-24 gap-y-16 grid-cols-1 md:gap-y-10 md:gap-x-10 '>
           {data.services.map((service) => (
