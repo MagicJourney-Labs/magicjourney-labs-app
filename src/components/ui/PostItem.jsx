@@ -2,8 +2,8 @@ const Post = ({ data: post }) => {
   const date = new Date(post.createdAt).toLocaleDateString('lt-LT', { year: 'numeric', month: 'long', day: 'numeric' });
 
   return (
-    <div className=' group relative flex flex-col items-start'>
-      <div className='hover:bg-slate-100 sm:w-1/2  rounded-lg p-4 cursor-pointer'>
+    <div className=' group relative flex flex-col items-start '>
+      <div className='hover:bg-slate-100 w-full md:w-1/2  rounded-lg p-4 cursor-pointer'>
         <div>
           <span className='text-sm underline underline-offset-8  decoration-slate-800 decoration-2'> {date}</span>
         </div>

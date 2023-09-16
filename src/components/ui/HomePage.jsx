@@ -3,25 +3,25 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 
 const HomePage = ({ data }) => {
-    function paragraphStr(data) {
-      const htmlStr = data.map((item) => {
-        const originalHtml = item.html;
-        const modifiedHtml = originalHtml.slice(0, 2) + ' class="mt-6"' + originalHtml.slice(2);
-    
-        return modifiedHtml;
-        });
-    
-      const combinedStr = htmlStr.join(' ');
-    
-      return combinedStr;
-    }
-    
-    const paragraphs = paragraphStr(data.paragraphs);
-    const paragraphsElement = { __html: `${paragraphs}` };
-    
+  function paragraphStr(data) {
+    const htmlStr = data.map((item) => {
+      const originalHtml = item.html;
+      const modifiedHtml = originalHtml.slice(0, 2) + ' class="mt-6"' + originalHtml.slice(2);
+
+      return modifiedHtml;
+    });
+
+    const combinedStr = htmlStr.join(' ');
+
+    return combinedStr;
+  }
+
+  const paragraphs = paragraphStr(data.paragraphs);
+  const paragraphsElement = { __html: `${paragraphs}` };
+
   return (
-    <div className='overflow-hidden bg-white py-20 sm:py-32'>
-      <div className='mx-auto max-w-7xl px-6 lg:px-8'>
+    <div className='overflow-hidden  bg-zinc-50 py-20 sm:py-32'>
+      <div className='mx-auto max-w-7xl px-6 lg:px-10'>
         <div className='mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-10 lg:mx-0 lg:max-w-none lg:grid-cols-2'>
           <div className='lg:pr-8 lg:pt-4'>
             <div className='lg:max-w-lg'>
@@ -42,6 +42,6 @@ const HomePage = ({ data }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 export default HomePage;
