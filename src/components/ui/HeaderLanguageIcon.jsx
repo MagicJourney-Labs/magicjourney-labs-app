@@ -17,7 +17,7 @@ const HeaderLanguageIcon = () => {
   return (
     <div className='flex flex-1 flex-row px-4 gap-1 cursor-pointer' onClick={toggleLanguage}>
       <Globe />
-      <span>{language}</span>
+      <span className='w-5'>{language}</span>
     </div>
   )
 }
