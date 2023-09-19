@@ -18,12 +18,12 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const { footer } = await fetchGraphQL(mainFooter);
   const { header } = await fetchGraphQL(mainHeader);
-
+  
   return (
     <html lang='en' className='h-full'>
       <body
         className={
-          inter.className + ' flex min-h-full flex-col max-w-[1200px] mx-auto'
+          inter.className + ' flex min-h-full flex-col mx-auto'
         }
       >
         <ToastContainer />

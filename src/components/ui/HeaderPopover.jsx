@@ -9,7 +9,7 @@ const HeaderPopover = ({ links }) => {
       {links.map((link) => (
         <Link
           key={link.id}
-          href={`${link.page ? link.page.slug : '#'}`}
+          href={`${link.page ? link.page.slug : '/'}`}
           className='text-sm font-semibold leading-6 text-gray-900'
         >
           {link.name}
