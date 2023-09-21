@@ -1,18 +1,23 @@
 const allBlogs = `
     query Blogs {
-        blogs {
-          createdAt
+      blogsPage(where: {id: "clmstdfl7g6g70cmfq9pp3wwy"}) {
+        chapterTextForAllBlogs
+        chapterTextForLatest
+        blogPosts {
+          title
+          author
+          createdDate
           content {
             text
           }
-          title
-          publishedAt
-          updatedAt
-          createdBy {
-            name
+          photo {
+            fileName
+            height
+            width
+            url
           }
-          id
         }
+      }
       }
         `;
 export { allBlogs };
