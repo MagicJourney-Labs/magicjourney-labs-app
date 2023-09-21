@@ -19,10 +19,10 @@ const Blogs = async () => {
     <div className='container mx-auto'>
       <div>
         <h2 className=''>{chapterTextForLatest}</h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+        <div className='grid grid-cols-1 md:cols lg:grid-cols-2 gap-6'>
           {latestBlogPosts.map((blog, index) => (
             <div
-              className={`${index === 0 ? 'row-span-2' : 'row-span-1'}`}
+              className={`col-span-1 ${index === 0 && '  row-span-2'}`}
               key={blog.id}
             >
               <BlogItem blog={blog} styleLatest={true} index={index} />
@@ -32,11 +32,9 @@ const Blogs = async () => {
       </div>
       <div className='flex flex-col'>
         <h2 className=''>{chapterTextForAllBlogs}</h2>
-        <div className='grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {blogPosts.map((blog) => (
-            <div className='' key={blog.id}>
-              <BlogItem blog={blog} />
-            </div>
+            <BlogItem key={blog.id} blog={blog} />
           ))}
         </div>
       </div>
