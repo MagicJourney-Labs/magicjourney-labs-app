@@ -10,6 +10,7 @@ const allBlogs = `
           content {
             text
           }
+          id
           photo {
             fileName
             height

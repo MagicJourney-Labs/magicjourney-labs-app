@@ -16,13 +16,15 @@ const Blogs = async () => {
   const latestBlogPosts = sortedBlogPosts.slice(0, 3);
 
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto flex flex-col gap-10'>
       <div>
         <h2 className=''>{chapterTextForLatest}</h2>
-        <div className='grid grid-cols-1 md:cols lg:grid-cols-2 gap-6'>
+        <div className='grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-2 gap-6'>
           {latestBlogPosts.map((blog, index) => (
             <div
-              className={`col-span-1 ${index === 0 && '  row-span-2'}`}
+              className={` ${
+                index === 0 ? ' md:row-span-2' : ' lg:col-span-2 xl:col-span-1'
+              }`}
               key={blog.id}
             >
               <BlogItem blog={blog} styleLatest={true} index={index} />
