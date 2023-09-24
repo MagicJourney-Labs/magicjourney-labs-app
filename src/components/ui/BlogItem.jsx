@@ -34,7 +34,7 @@ const BlogItem = ({ blog, styleLatest, index }) => {
         sizes='sizes="(min-width: 1480px) 419px, (min-width: 1040px) 28.57vw, (min-width: 780px) calc(50vw - 52px), calc(100vw - 64px'
       />
 
-      <div className={`${latestStyle && 'w-full md:w-1/2'}`}>
+      <div className={`${latestStyle && 'w-full md:w-1/2'} w-full`}>
         <div className='flex gap-x-1 items-center text-purple-700'>
           <span>{blog.author}</span>
           <span>•</span>

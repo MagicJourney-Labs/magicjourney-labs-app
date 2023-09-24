@@ -1,19 +1,22 @@
 import { fetchGraphQL } from '@/lib/graphqlUtils';
-import { allBlogs } from '@/queries/blogs';
+import { allBlogs, latestBlogs } from '@/queries/blogs';
 import BlogItem from './BlogItem';
 
 const Blogs = async () => {
-  const { blogsPage } = await fetchGraphQL(allBlogs, {
+  const skip = 1;
+  const last = 4;
+  const { blogsPage } = await fetchGraphQL(
+    allBlogs,
+    {
+      next: { tags: ['blogs'] },
+    },
+    { variables: { skip: skip, last: last } }
+  );
+  const { blogsPage: latestBlogsPage } = await fetchGraphQL(latestBlogs, {
     next: { tags: ['blogs'] },
   });
-
   const { chapterTextForAllBlogs, chapterTextForLatest, blogPosts } = blogsPage;
-  const sortedBlogPosts = blogPosts.sort((a, b) => {
-    const dateA = new Date(a.createdDate);
-    const dateB = new Date(b.createdDate);
-    return dateB - dateA;
-  });
-  const latestBlogPosts = sortedBlogPosts.slice(0, 3);
+  const { blogPosts: latestBlogPosts } = latestBlogsPage;
 
   return (
     <div className='container mx-auto flex flex-col gap-10'>
