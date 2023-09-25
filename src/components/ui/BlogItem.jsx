@@ -1,8 +1,11 @@
+import { format } from 'date-fns';
+import lt from 'date-fns/locale/lt';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const BlogItem = ({ blog, styleLatest, index }) => {
   const latestStyle = styleLatest && index !== 0;
+  const firstFromRecent = styleLatest && index === 0;
   return (
     <Link
       href={`/blogs/${blog.id}`}
@@ -16,18 +19,18 @@ const BlogItem = ({ blog, styleLatest, index }) => {
         className='md:hidden m-0'
         src={blog.photo.url}
         alt={blog.photo.fileName}
-        width={blog.photo.width}
-        height={blog.photo.height}
+        width={684}
+        height={456}
         sizes='sizes="(min-width: 1480px) 419px, (min-width: 1040px) 28.57vw, (min-width: 780px) calc(50vw - 52px), calc(100vw - 64px'
       />
       <Image
         className='hidden md:block m-0'
         src={blog.photo.url}
         alt={blog.photo.fileName}
-        width={latestStyle ? 300 : blog.photo.width}
-        height={blog.photo.height}
+        width={latestStyle ? 300 : firstFromRecent ? 1000 : 429}
+        height={firstFromRecent ? 250 : 200}
         style={{
-          maxHeight: `200px`,
+          maxHeight: firstFromRecent ? '250px' : `200px`,
           width: latestStyle ? '300px' : '',
           objectFit: 'cover',
         }}
@@ -39,11 +42,7 @@ const BlogItem = ({ blog, styleLatest, index }) => {
           <span>{blog.author}</span>
           <span>•</span>
           <span className=' whitespace-nowrap'>
-            {new Date(blog.createdDate).toLocaleDateString('LT', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-            })}
+            {format(new Date(blog.createdDate), ' d MMM  Y', { locale: lt })}
           </span>
         </div>
         <div className='flex justify-between mt-5'>
