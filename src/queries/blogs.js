@@ -8,6 +8,7 @@ const allBlogs = `
           title
           author
           createdDate
+          blogCategories
           content {
             text
           }
@@ -32,6 +33,7 @@ const latestBlogs = `
               title
               author
               createdDate
+              blogCategories
               content {
                 text
               }

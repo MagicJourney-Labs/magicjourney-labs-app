@@ -2,10 +2,24 @@ import { format } from 'date-fns';
 import lt from 'date-fns/locale/lt';
 import Image from 'next/image';
 import Link from 'next/link';
+import { shuffleArray } from './ShuffleArray';
 
 const BlogItem = ({ blog, styleLatest, index }) => {
   const latestStyle = styleLatest && index !== 0;
   const firstFromRecent = styleLatest && index === 0;
+  const categoryColors = [
+    'text-blue-600 bg-blue-100',
+    'text-red-600 bg-red-100 ',
+    'text-green-600 bg-green-100',
+    'text-yellow-600 bg-yellow-100',
+    'text-purple-600 bg-purple-100',
+    'text-pink-600 bg-pink-100',
+    'text-indigo-600 bg-indigo-100',
+    'text-teal-600 bg-teal-100',
+    'text-orange-600 bg-orange-100',
+    'text-gray-600 bg-gray-100',
+  ];
+  const shuffledCategoryColors = shuffleArray(categoryColors);
   return (
     <Link
       href={`/blogs/${blog.id}`}
@@ -50,6 +64,22 @@ const BlogItem = ({ blog, styleLatest, index }) => {
           <span className='font-bold'>↗</span>
         </div>
         <p className='m-0 line-clamp-3 text-gray-500'>{blog.content.text}</p>
+        <div className='flex flex-wrap gap-3 pl-2 my-5'>
+          {' '}
+          {blog.blogCategories?.length !== 0 &&
+            blog.blogCategories.map((category, index) => {
+              const colorClass =
+                shuffledCategoryColors[index % shuffledCategoryColors.length];
+              return (
+                <p
+                  key={index}
+                  className={`px-2 m-0 rounded-full  ${colorClass}`}
+                >
+                  {category}
+                </p>
+              );
+            })}
+        </div>
       </div>
     </Link>
   );
