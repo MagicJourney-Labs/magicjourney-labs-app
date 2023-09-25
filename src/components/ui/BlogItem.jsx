@@ -39,16 +39,16 @@ const BlogItem = ({ blog, styleLatest, index }) => {
           <span>{blog.author}</span>
           <span>•</span>
           <span className=' whitespace-nowrap'>
-            {new Date(blog.createdDate).toLocaleDateString('lt-LT', {
+            {new Date(blog.createdDate).toLocaleDateString('LT', {
               year: 'numeric',
-              month: 'long',
+              month: 'short',
               day: 'numeric',
             })}
           </span>
         </div>
         <div className='flex justify-between mt-5'>
           <h3 className='text-2xl m-0'>{blog.title}</h3>
-          {!latestStyle && <span className='font-bold'>↗</span>}
+          <span className='font-bold'>↗</span>
         </div>
         <p className='m-0 line-clamp-3 text-gray-500'>{blog.content.text}</p>
       </div>
