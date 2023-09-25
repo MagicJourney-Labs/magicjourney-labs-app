@@ -4,6 +4,8 @@ const allBlogs = `
         title
         chapterTextForAllBlogs
         chapterTextForLatest
+        paginationTextPage
+        paginationTextOf
         blogPosts(orderBy: createdDate_DESC) {
           title
           author

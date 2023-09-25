@@ -62,6 +62,7 @@ const Blogs = async ({ searchParams }) => {
               hasPrevPage={start > 0}
               dataLength={blogPosts.length}
               perPage={perPage}
+              blogsPage={blogsPage}
             />
           </div>
         </div>
