@@ -22,7 +22,7 @@ const BlogItem = ({ blog, styleLatest, index }) => {
   const shuffledCategoryColors = shuffleArray(categoryColors);
   return (
     <Link
-      href={`/blogs/${blog.id}`}
+      href={`/blogs/#`}
       className={`no-underline ${
         latestStyle
           ? 'flex flex-col md:flex-row items-center md:items-start'
