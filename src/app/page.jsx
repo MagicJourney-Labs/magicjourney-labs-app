@@ -1,4 +1,4 @@
-import { fetchGraphQL } from '@/lib/graphqlUtils';
+import { fetchGraphQL } from '@/lib/utils/graphqlUtils';
 import { home } from '@/queries/home';
 import { ourProjects } from '@/queries/ourProjects';
 import { allServices } from '@/queries/services';

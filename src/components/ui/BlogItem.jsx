@@ -1,25 +1,11 @@
-import { format } from 'date-fns';
-import lt from 'date-fns/locale/lt';
 import Image from 'next/image';
 import Link from 'next/link';
-import { shuffleArray } from './ShuffleArray';
+import DateUtils from '../../lib/utils/dateUtils';
 
 const BlogItem = ({ blog, styleLatest, index }) => {
   const latestStyle = styleLatest && index !== 0;
   const firstFromRecent = styleLatest && index === 0;
-  const categoryColors = [
-    'text-blue-600 bg-blue-100',
-    'text-red-600 bg-red-100 ',
-    'text-green-600 bg-green-100',
-    'text-yellow-600 bg-yellow-100',
-    'text-purple-600 bg-purple-100',
-    'text-pink-600 bg-pink-100',
-    'text-indigo-600 bg-indigo-100',
-    'text-teal-600 bg-teal-100',
-    'text-orange-600 bg-orange-100',
-    'text-gray-600 bg-gray-100',
-  ];
-  const shuffledCategoryColors = shuffleArray(categoryColors);
+
   return (
     <Link
       href={`/blogs/#`}
@@ -56,7 +42,7 @@ const BlogItem = ({ blog, styleLatest, index }) => {
           <span>{blog.author}</span>
           <span>•</span>
           <span className=' whitespace-nowrap'>
-            {format(new Date(blog.createdDate), ' d MMM  Y', { locale: lt })}
+            {DateUtils.formatDate(blog.createdDate)}
           </span>
         </div>
         <div className='flex justify-between mt-3'>
@@ -68,12 +54,11 @@ const BlogItem = ({ blog, styleLatest, index }) => {
           {' '}
           {blog.blogCategories?.length !== 0 &&
             blog.blogCategories.map((category, index) => {
-              const colorClass =
-                shuffledCategoryColors[index % shuffledCategoryColors.length];
+              console.log(blog.categoryColor?.hex);
               return (
                 <p
                   key={index}
-                  className={`px-2 m-0 rounded-full  ${colorClass}`}
+                  className={`px-2 m-0 rounded-full  bg-[${blog.categoryColor?.hex}]`}
                 >
                   <span className='text-sm'>{category}</span>
                 </p>

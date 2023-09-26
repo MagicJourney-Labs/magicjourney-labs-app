@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 import Header from '@/components/ui/Header';
 import { MobileMenuProvider } from '../components/ui/MobileMenuProvider';
 import Footer from '@/components/ui/Footer';
-import { fetchGraphQL } from '@/lib/graphqlUtils';
+import { fetchGraphQL } from '@/lib/utils/graphqlUtils';
 import { mainFooter } from '@/queries/footer';
 import { mainHeader } from '@/queries/header';
 import { ToastContainer } from 'react-toastify';

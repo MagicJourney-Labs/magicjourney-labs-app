@@ -1,4 +1,4 @@
-import { fetchGraphQL } from '@/lib/graphqlUtils';
+import { fetchGraphQL } from '@/lib/utils/graphqlUtils';
 import NotFound from '../notFound';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { singlePage } from '@/queries/pages';

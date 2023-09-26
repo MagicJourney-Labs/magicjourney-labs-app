@@ -1,4 +1,4 @@
-import { fetchGraphQL } from '@/lib/graphqlUtils';
+import { fetchGraphQL } from '@/lib/utils/graphqlUtils';
 import { contactsForm } from '@/queries/forms';
 import { NextResponse } from 'next/server';
 
