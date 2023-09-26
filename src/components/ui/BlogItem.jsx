@@ -5,7 +5,6 @@ import DateUtils from '../../lib/utils/dateUtils';
 const BlogItem = ({ blog, styleLatest, index }) => {
   const latestStyle = styleLatest && index !== 0;
   const firstFromRecent = styleLatest && index === 0;
-
   return (
     <Link
       href={`/blogs/#`}
@@ -52,15 +51,17 @@ const BlogItem = ({ blog, styleLatest, index }) => {
         <p className='m-0 line-clamp-3 text-gray-500'>{blog.content.text}</p>
         <div className='flex flex-wrap gap-3 pl-2 mt-4'>
           {' '}
-          {blog.blogCategories?.length !== 0 &&
-            blog.blogCategories.map((category, index) => {
-              console.log(blog.categoryColor?.hex);
+          {blog.categories?.length !== 0 &&
+            blog.categories.map((category, index) => {
               return (
                 <p
                   key={index}
-                  className={`px-2 m-0 rounded-full  bg-[${blog.categoryColor?.hex}]`}
+                  className={`px-2 m-0 rounded-full `}
+                  style={{
+                    backgroundColor: category.color?.hex || 'default-color',
+                  }}
                 >
-                  <span className='text-sm'>{category}</span>
+                  <span className='text-sm'>{category.category}</span>
                 </p>
               );
             })}

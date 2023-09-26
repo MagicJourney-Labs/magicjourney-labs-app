@@ -14,9 +14,11 @@ const allBlogs = `
           title
           author
           createdDate
-          blogCategories
-          categoryColor {
-            hex
+          categories {
+            color {
+              hex
+            }
+            category
           }
           content {
             text
