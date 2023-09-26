@@ -1,34 +1,34 @@
 const allBlogs = `
     query Blogs {
-      blogsPage(where: {id: "clmstdfl7g6g70cmfq9pp3wwy"}) {
-        title
-        chapterTextForAllBlogs
-        chapterTextForLatest
-        pagination {
-          textNext
-          textOf
-          textPage
-          textPrevious
+      blogsConnection(orderBy: createdAt_DESC) {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          pageSize
         }
-        blogPosts(orderBy: createdDate_DESC) {
-          title
-          author
-          createdDate
-          categories {
-            color {
-              hex
+        edges {
+          node {
+            author
+            categories {
+              category
+              color {
+                hex
+              }
             }
-            category
-          }
-          content {
-            text
-          }
-          id
-          photo {
-            fileName
-            height
-            width
-            url
+            content {
+              text
+            }
+            title
+            createdAt
+            createdBy {
+              name
+            }
+            photo {
+              height
+              fileName
+              width
+              url
+            }
           }
         }
       }

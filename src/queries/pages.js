@@ -11,5 +11,24 @@ const singlePage = `
                 }
               }   
           `;
+const blogsPage = `
+        query blogsPage {
+          page(where: {id: "clm3u9q4yid7d0blamqf5jq0r"}) {
+            components {
+              ... on BlogPage {
+                id
+                chapterTextForAllBlogs
+                chapterTextForLatest
+                paginationText {
+                  textNext
+                  textOf
+                  textPage
+                  textPrevious
+                }
+              }
+            }
+          }
+        }
+        `;
 
-export { singlePage };
+export { singlePage, blogsPage };

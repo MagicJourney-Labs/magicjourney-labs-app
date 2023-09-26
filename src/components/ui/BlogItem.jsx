@@ -4,6 +4,9 @@ import DateUtils from '../../lib/utils/dateUtils';
 
 const BlogItem = ({ blog, styleLatest, index }) => {
   const latestStyle = styleLatest && index !== 0;
+
+  const { author, categories, content, title, createdAt, photo } = blog;
+
   const firstFromRecent = styleLatest && index === 0;
   return (
     <Link
@@ -16,16 +19,16 @@ const BlogItem = ({ blog, styleLatest, index }) => {
     >
       <Image
         className='md:hidden m-0'
-        src={blog.photo.url}
-        alt={blog.photo.fileName}
+        src={photo.url}
+        alt={photo.fileName}
         width={684}
         height={456}
         sizes='sizes="(min-width: 1480px) 419px, (min-width: 1040px) 28.57vw, (min-width: 780px) calc(50vw - 52px), calc(100vw - 64px'
       />
       <Image
         className='hidden md:block m-0'
-        src={blog.photo.url}
-        alt={blog.photo.fileName}
+        src={photo.url}
+        alt={photo.fileName}
         width={latestStyle ? 300 : firstFromRecent ? 1000 : 430}
         height={latestStyle ? 210 : 230}
         style={{
@@ -38,21 +41,21 @@ const BlogItem = ({ blog, styleLatest, index }) => {
 
       <div className={`${latestStyle && 'w-full md:w-1/2'} w-full`}>
         <div className='flex gap-x-1 items-center text-purple-700 text-xs'>
-          <span>{blog.author}</span>
+          <span>{author}</span>
           <span>•</span>
           <span className=' whitespace-nowrap'>
-            {DateUtils.formatDate(blog.createdDate)}
+            {DateUtils.formatDate(createdAt)}
           </span>
         </div>
         <div className='flex justify-between mt-3'>
-          <h3 className='text-2xl m-0'>{blog.title}</h3>
+          <h3 className='text-2xl m-0'>{title}</h3>
           <span className='font-bold text-2xl'>🡥</span>
         </div>
-        <p className='m-0 line-clamp-3 text-gray-500'>{blog.content.text}</p>
+        <p className='m-0 line-clamp-3 text-gray-500'>{content.text}</p>
         <div className='flex flex-wrap gap-3 pl-2 mt-4'>
           {' '}
-          {blog.categories?.length !== 0 &&
-            blog.categories.map((category, index) => {
+          {categories?.length !== 0 &&
+            categories.map((category, index) => {
               return (
                 <p
                   key={index}
