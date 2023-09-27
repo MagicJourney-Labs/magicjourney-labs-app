@@ -14,7 +14,7 @@ const BlogItem = ({ blog, styleLatest, index }) => {
       className={`no-underline ${
         latestStyle
           ? 'flex flex-col md:flex-row items-center md:items-start'
-          : 'grid content-between justify-items-center md:justify-items-start'
+          : 'grid content-start justify-items-center md:justify-items-start'
       } gap-6 `}
     >
       <Image
@@ -48,23 +48,25 @@ const BlogItem = ({ blog, styleLatest, index }) => {
           </span>
         </div>
         <div className='flex justify-between mt-3'>
-          <h3 className='text-2xl m-0'>{title}</h3>
+          <h3 className='text-2xl m-0 font-bold first-letter:uppercase'>
+            {title}
+          </h3>
           <span className='font-bold text-2xl'>🡥</span>
         </div>
         <p className='m-0 line-clamp-3 text-gray-500'>{content.text}</p>
-        <div className='flex flex-wrap gap-3 pl-2 mt-4'>
+        <div className='flex flex-wrap gap-3 mt-4  '>
           {' '}
           {categories?.length !== 0 &&
             categories.map((category, index) => {
               return (
                 <p
                   key={index}
-                  className={`px-2 m-0 rounded-full `}
+                  className={`px-2 m-0 rounded-full`}
                   style={{
                     backgroundColor: category.color?.hex || 'default-color',
                   }}
                 >
-                  <span className='text-sm'>{category.category}</span>
+                  <span className='text-sm '>{category.category}</span>
                 </p>
               );
             })}

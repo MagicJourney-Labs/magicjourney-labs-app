@@ -1,5 +1,6 @@
 import BlogItem from '@/components/ui/BlogItem';
 import PaginationControls from '@/components/ui/PaginationControls';
+import RecentBlogPosts from '@/components/ui/RecentBlogPosts';
 import { fetchGraphQL } from '@/lib/utils/graphqlUtils';
 import { allBlogs } from '@/queries/blogs';
 import { blogsPage } from '@/queries/pages';
@@ -40,27 +41,7 @@ const Blogs = async ({ searchParams }) => {
       <div className='pb-16 lg:pb-20'>
         <div className='prose max-w-none pt-10 pb-8'>
           <div className='container mx-auto flex flex-col gap-10'>
-            <div>
-              <h2 className=''>{chapterTextForLatest}</h2>
-              <div className='grid grid-cols-1  lg:grid-cols-3 xl:grid-cols-2 gap-6'>
-                {latestBlogPosts.map((blog, index) => (
-                  <div
-                    className={` ${
-                      index === 0
-                        ? ' md:row-span-2'
-                        : ' lg:col-span-2 xl:col-span-1'
-                    }`}
-                    key={blog.node.id}
-                  >
-                    <BlogItem
-                      blog={blog.node}
-                      styleLatest={true}
-                      index={index}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <RecentBlogPosts />
             <div className='flex flex-col'>
               <h2 className=''>{chapterTextForAllBlogs}</h2>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
