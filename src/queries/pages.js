@@ -14,6 +14,7 @@ const singlePage = `
 const blogsPage = `
         query blogsPage {
           page(where: {id: "clm3u9q4yid7d0blamqf5jq0r"}) {
+            title
             components {
               ... on BlogPage {
                 id

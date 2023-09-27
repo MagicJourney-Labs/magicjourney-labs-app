@@ -1,6 +1,6 @@
 const allBlogs = `
-    query Blogs {
-      blogsConnection(orderBy: createdAt_DESC) {
+    query Blogs($first: Int, $skip: Int) {
+      blogsConnection(orderBy: createdAt_DESC, first: $first, skip: $skip) {
         pageInfo {
           hasNextPage
           hasPreviousPage
@@ -8,6 +8,7 @@ const allBlogs = `
         }
         edges {
           node {
+            id
             author
             categories {
               category

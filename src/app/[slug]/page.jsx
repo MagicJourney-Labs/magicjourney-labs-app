@@ -3,7 +3,6 @@ import NotFound from '../notFound';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { singlePage } from '@/queries/pages';
 import ContactsForm from '@/components/ui/Form';
-import Blogs from '@/components/ui/Blogs';
 
 export default async function Page({ params }) {
   const { page } = await fetchGraphQL(
@@ -25,7 +24,6 @@ export default async function Page({ params }) {
         <div className='prose max-w-none pt-10 pb-8'>
           <RichText content={page.content.raw} />
           {params.slug === 'contacts' ? <ContactsForm /> : ''}
-          {params.slug === 'blogs' ? <Blogs /> : ''}
         </div>
       </div>
     </div>
