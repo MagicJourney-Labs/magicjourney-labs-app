@@ -18,7 +18,7 @@ const ContactsForm = () => {
   if (!contacts) {
     return;
   }
-  const { title, button, formFields } = contacts.form;
+  const { title, button, formFields, subtitle, kicker } = contacts.form;
 
   const initialValues = {};
 
@@ -65,7 +65,11 @@ const ContactsForm = () => {
 
   return (
     <div className='max-w-md mx-auto p-4 bg-white rounded shadow-md'>
-      <h2 className='text-2xl font-semibold mb-4'>{title}</h2>
+      <div className='text-center flex flex-col gap-5 pb-16'>
+        <div className='text-blue-500 text-sm font-semibold'>{kicker}</div>
+        <h2 className='text-3xl font-semibold m-0  '>{title}</h2>
+        <h3 className='text-sm font-normal text-gray-500 m-0'>{subtitle}</h3>
+      </div>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
