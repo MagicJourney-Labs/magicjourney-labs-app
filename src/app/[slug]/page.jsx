@@ -2,7 +2,6 @@ import { fetchGraphQL } from '@/lib/utils/graphqlUtils';
 import NotFound from '../notFound';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import { singlePage } from '@/queries/pages';
-import ContactsForm from '@/components/ui/Form';
 
 export default async function Page({ params }) {
   const { page } = await fetchGraphQL(
@@ -23,7 +22,6 @@ export default async function Page({ params }) {
       <div className='pb-16 lg:pb-20'>
         <div className='prose max-w-none pt-10 pb-8'>
           <RichText content={page.content.raw} />
-          {params.slug === 'contacts' ? <ContactsForm /> : ''}
         </div>
       </div>
     </div>
