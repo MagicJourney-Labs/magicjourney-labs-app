@@ -13,9 +13,9 @@ export default async function Page({ params }) {
     return NotFound();
   }
   return (
-    <div className='divide-y divide-gray-200'>
-      <div className='pt-6 pb-8 space-y-2 md:space-y-5'>
-        <h1 className='text-3xl leading-9 font-extrabold text-gray-900 tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14'>
+    <div className='divide-y divide-gray-200 container mx-auto max-w-7xl lg:px-8'>
+      <div className='pt-20 pb-16 space-y-2 md:space-y-5'>
+        <h1 className='text-3xl leading-9 font-bold text-slate-900 tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14'>
           {page.title}
         </h1>
       </div>
