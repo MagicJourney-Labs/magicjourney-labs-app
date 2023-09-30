@@ -1,6 +1,7 @@
 import { Form, Field, ErrorMessage } from 'formik';
 import React from 'react';
 import { Button } from './Button';
+import Link from 'next/link';
 
 const FormItem = ({ button, formFields, errors, touched }) => {
   return (
@@ -20,6 +21,14 @@ const FormItem = ({ button, formFields, errors, touched }) => {
                 className=' text-gray-700  font-medium '
               >
                 {field.label}
+                {field.labelLink && (
+                  <Link
+                    className='hover:text-blue-500'
+                    href={`/${field.labelLink?.page.slug}`}
+                  >
+                    {field.labelLink?.name}
+                  </Link>
+                )}
               </label>
               <Field
                 type={field.type}

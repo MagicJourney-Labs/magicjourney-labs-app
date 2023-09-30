@@ -9,6 +9,12 @@ query form {
         ... on FormField {
           name
           label
+          labelLink {
+            name
+            page {
+              slug
+            }
+          }
           type
           required
           error
