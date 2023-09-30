@@ -23,7 +23,7 @@ const FormItem = ({ button, formFields, errors, touched }) => {
                 {field.label}
                 {field.labelLink && (
                   <Link
-                    className='hover:text-blue-500'
+                    className='hover:text-blue-500 text-base'
                     href={`/${field.labelLink?.page.slug}`}
                   >
                     {field.labelLink?.name}
