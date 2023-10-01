@@ -30,26 +30,28 @@ const Blogs = async ({ searchParams }) => {
   const entries = blogs.slice(start, end);
 
   return (
-    <div className='pb-16 lg:pb-20'>
-      <div className='prose max-w-none pt-10 pb-8'>
-        <div className='container mx-auto flex flex-col gap-10'>
-          <RecentBlogPosts />
-          <div className='flex flex-col'>
-            <h2 className=''>{chapterTextForAllBlogs}</h2>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-              {entries.map((blog) => (
-                <BlogItem key={blog.node.id} blog={blog.node} />
-              ))}
+    <div className='divide-y divide-gray-200 container mx-auto max-w-7xl lg:px-8'>
+      <div className='pb-16 lg:pb-20'>
+        <div className='prose max-w-none pt-10 pb-8'>
+          <div className='container mx-auto flex flex-col gap-10'>
+            <RecentBlogPosts />
+            <div className='flex flex-col'>
+              <h2 className=''>{chapterTextForAllBlogs}</h2>
+              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                {entries.map((blog) => (
+                  <BlogItem key={blog.node.id} blog={blog.node} />
+                ))}
+              </div>
             </div>
+            <PaginationControls
+              hasNextPage={end < blogs.length}
+              hasPrevPage={start > 0}
+              dataLength={blogs.length}
+              perPage={perPage}
+              pagination={paginationText}
+              slug='blogs'
+            />
           </div>
-          <PaginationControls
-            hasNextPage={end < blogs.length}
-            hasPrevPage={start > 0}
-            dataLength={blogs.length}
-            perPage={perPage}
-            pagination={paginationText}
-            slug='blogs'
-          />
         </div>
       </div>
     </div>
