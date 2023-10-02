@@ -6,7 +6,7 @@ import Link from 'next/link';
 const FormItem = ({ button, formFields, errors, touched }) => {
   return (
     <Form className='max-w-lg mx-auto  '>
-      <ul className=' list-none m-0 p-0 [&>*:nth-child(2)]:md:w-[calc(50%-12px)] [&>*:first-child]:md:w-[calc(50%-12px)] flex flex-wrap gap-6 '>
+      <ul className=' list-none m-0 p-0 [&>*:nth-child(2)]:sm:w-[calc(50%-12px)] [&>*:first-child]:sm:w-[calc(50%-12px)] flex flex-wrap gap-6 '>
         {formFields.map((field, i) => (
           <li key={field.name} className='w-full flex flex-col gap-1'>
             <div

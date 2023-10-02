@@ -33,7 +33,7 @@ const Blogs = async ({ searchParams }) => {
     <div className='divide-y divide-gray-200 container mx-auto max-w-7xl lg:px-8'>
       <div className='pb-16 lg:pb-20'>
         <div className='prose max-w-none pt-10 pb-8'>
-          <div className='container mx-auto flex flex-col gap-10'>
+          <div className='md:container mx-auto flex flex-col gap-10'>
             <RecentBlogPosts />
             <div className='flex flex-col'>
               <h2 className=''>{chapterTextForAllBlogs}</h2>
