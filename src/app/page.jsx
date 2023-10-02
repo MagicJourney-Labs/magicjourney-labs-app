@@ -8,6 +8,7 @@ import OurProjects from '@/components/ui/OurProjects';
 import Services from '@/components/ui/Services';
 import FeaturedPosts from '@/components/ui/Posts';
 import RecentBlogPosts from '@/components/ui/RecentBlogPosts';
+import Testimonials from '@/components/testimonials';
 
 export default async function Home() {
   const { homePage } = await fetchGraphQL(home);
@@ -24,6 +25,7 @@ export default async function Home() {
         <div className='px-10 flex flex-col items-center mx-auto max-w-7xl  lg:px-10 py-24'>
           <RecentBlogPosts />
         </div>
+        <Testimonials />
       </main>
     </div>
   );
