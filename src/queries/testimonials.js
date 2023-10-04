@@ -6,10 +6,11 @@ const allTestimonials = `{
         }
         subtitle
         title
-        reviewers {
+        reviewers(last: 3) {
             id
             name
             place
+            videoLink
             photo {
                 url
             }
