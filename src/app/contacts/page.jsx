@@ -2,7 +2,7 @@ import ContactsForm from '@/components/ui/Form';
 
 const Contacts = () => {
   return (
-    <div className='container mx-auto py-20'>
+    <div className='md:container mx-auto py-20'>
       <ContactsForm />
     </div>
   );

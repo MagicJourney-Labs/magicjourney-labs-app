@@ -51,7 +51,15 @@ const BlogItem = ({ blog, styleLatest, index }) => {
           <h3 className='text-2xl m-0 font-bold first-letter:uppercase'>
             {title}
           </h3>
-          <span className='font-bold text-2xl'>🡥</span>
+          <span className='font-bold text-2xl'>
+            <Image
+              className='m-0'
+              src='/up-right-48.png'
+              alt='arrow'
+              width={25}
+              height={25}
+            />
+          </span>
         </div>
         <p className='m-0 line-clamp-3 text-gray-500'>{content.text}</p>
         <div className='flex flex-wrap gap-3 mt-4  '>

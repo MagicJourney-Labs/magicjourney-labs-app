@@ -12,7 +12,7 @@ function Header({ data }) {
   return (
     <header className='bg-white sticky top-0 z-50 shadow-[0_2px_4px_rgba(0,0,0,0.15)]'>
       <nav
-        className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8'
+        className='mx-auto flex max-w-7xl items-center justify-between p-5 lg:px-8'
         aria-label='Global'
       >
         <div className='flex'>
@@ -37,7 +37,10 @@ function Header({ data }) {
           <HeaderMobileButton />
 
           <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
-            <Link href='#' className='text-sm font-semibold leading-6 text-gray-900'>
+            <Link
+              href='#'
+              className='text-sm font-semibold leading-6 text-gray-900'
+            >
               <Button>{headerLogIn.name}</Button>
             </Link>
           </div>

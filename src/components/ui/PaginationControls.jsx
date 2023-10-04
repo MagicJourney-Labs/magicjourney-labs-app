@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -28,13 +29,22 @@ const PaginationControls = ({
   return (
     <div className='flex justify-around md:justify-between items-center  border-t-2 pt-5 text-gray-500 text-xl'>
       <button
-        className=' p-1 hover:text-black flex gap-2'
+        className=' p-1 hover:text-black flex gap-2 items-center filter hover:brightness-0'
         disabled={!hasPrevPage}
         onClick={() => {
           router.push(`/${slug}?page=${Number(page) - 1}&per_page=${per_page}`);
         }}
       >
-        <span>🡠</span>
+        <span>
+          {' '}
+          <Image
+            className='m-0 '
+            src='/leftArrow.png'
+            alt='arrow'
+            width={30}
+            height={30}
+          />
+        </span>
         <span className='hidden md:block '>{pagination.textPrevious}</span>
       </button>
 
@@ -110,14 +120,23 @@ const PaginationControls = ({
       </div>
 
       <button
-        className='p-1 hover:text-black flex gap-2'
+        className='p-1 hover:text-black flex gap-2 items-center filter hover:brightness-0'
         disabled={!hasNextPage}
         onClick={() => {
           router.push(`/${slug}?page=${Number(page) + 1}&per_page=${per_page}`);
         }}
       >
         <span className='hidden md:block '>{pagination.textNext}</span>
-        <span> 🡢</span>
+        <span>
+          {' '}
+          <Image
+            className='m-0 '
+            src='/rightArrow.png'
+            alt='arrow'
+            width={30}
+            height={30}
+          />
+        </span>
       </button>
     </div>
   );
