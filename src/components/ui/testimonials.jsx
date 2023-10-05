@@ -4,6 +4,7 @@ import Link from 'next/link';
 import ReactPlayer from 'react-player/youtube';
 import { useState } from 'react';
 import Image from 'next/image';
+import CarouselElement from './CarouselElement';
 
 const Testimonials = ({ testimonials }) => {
   const [isPlaying, setIsPlaying] = useState({});
@@ -15,6 +16,7 @@ const Testimonials = ({ testimonials }) => {
       [reviewerId]: !prevState[reviewerId],
     }));
   };
+
   return (
     <div className='pt-20 pb-20 bg-zinc-50'>
       <div className=' flex flex-col items-center mx-auto max-w-7xl container'>
@@ -22,9 +24,11 @@ const Testimonials = ({ testimonials }) => {
         <h3 className='mx-auto max-w-2xl text-center text-gray-900 text-lg font-normal leading-7 pb-6 sm:pb-20'>
           {subtitle}
         </h3>
-        <div className='flex justify-center gap-12 pb-14 flex-wrap'>
+      </div>
+      <div className=' relative mx-auto container sm:px-0 md:px-10'>
+        <CarouselElement>
           {reviewers.map((reviewer) => (
-            <div className='relative' key={reviewer.id}>
+            <div key={reviewer.id}>
               {isPlaying[reviewer.id] ? (
                 <ReactPlayer
                   controls={false}
@@ -46,7 +50,7 @@ const Testimonials = ({ testimonials }) => {
                   sizes='(min-width: 440px) 350px, calc(95vw - 49px)'
                   alt='img'
                   src={reviewer.photo.url}
-                  className='rounded-3xl '
+                  className='rounded-3xl relative'
                 />
               )}
               <div className='flex gap-2 justify-between items-center absolute bottom-7 left-8 w-[280px]'>
@@ -63,11 +67,11 @@ const Testimonials = ({ testimonials }) => {
               ></div>
             </div>
           ))}
-        </div>
+        </CarouselElement>
       </div>
       <Link
         href={link.href}
-        className='flex justify-center items-center gap-3 text-blue-600 font-semibold text-base'
+        className='flex justify-center items-center gap-3 text-blue-600 font-semibold text-base pt-10'
       >
         <span>{link.name}</span>
         <Image
