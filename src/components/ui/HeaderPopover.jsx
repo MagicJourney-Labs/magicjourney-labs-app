@@ -25,7 +25,9 @@ const HeaderPopover = ({ links }) => {
           <Link
             key={link.id}
             href={formatedHref}
-            className={`${path === formatedHref ? 'text-blue-800' : 'text-gray-900'} text-sm font-semibold leading-6 hover:text-blue-400`}
+            className={`${
+              path === formatedHref ? 'text-blue-800' : 'text-gray-900'
+            } text-base font-semibold leading-6 hover:text-blue-400`}
           >
             {link.name}
           </Link>

@@ -15,6 +15,7 @@ export default async function Home() {
   const { aboutCard } = await fetchGraphQL(allServices);
   const { testimonials } = await fetchGraphQL(allTestimonials);
 
+
   return (
     <div className='flex  lg:w-full xl:flex  flex-col self-stretch'>
       <main>
