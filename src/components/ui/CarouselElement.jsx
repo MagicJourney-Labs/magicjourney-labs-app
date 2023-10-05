@@ -13,11 +13,11 @@ const CarouselElement = ({ children }) => {
       items: 3,
     },
     tablet: {
-      breakpoint: { max: 1300, min: 464 },
+      breakpoint: { max: 1380, min: 464 },
       items: 2,
     },
     mobile: {
-      breakpoint: { max: 1025, min: 0 },
+      breakpoint: { max: 1125, min: 0 },
       items: 1,
     },
   };
