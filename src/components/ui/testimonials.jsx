@@ -25,19 +25,35 @@ const Testimonials = ({ testimonials }) => {
           {subtitle}
         </h3>
       </div>
-      <div className=' relative mx-auto container sm:px-0 md:px-10'>
+      <div className=' relative mx-auto max-w-7xl container'>
         <CarouselElement>
           {reviewers.map((reviewer) => (
-            <div className='flex gap-10' key={reviewer.id}>
+            <div className='flex justify-center' key={reviewer.id}>
               {isPlaying[reviewer.id] ? (
-                <ReactPlayer
-                  controls={false}
-                  width='350px'
-                  height='500px'
-                  playing={true}
-                  url={reviewer.videoLink}
-                  className='rounded-3xl overflow-hidden'
-                />
+                <div className='relative w-[350px] h-[500px]'>
+                  <ReactPlayer
+                    controls={false}
+                    width='350px'
+                    height='500px'
+                    playing={true}
+                    url={reviewer.videoLink}
+                    className=' rounded-3xl overflow-hidden'
+                  />
+                  <div className='flex gap-2 justify-between items-center absolute bottom-7 left-8 w-[280px]'>
+                    <div className='  flex flex-col text-white'>
+                      <span className='text-lg font-semibold '>
+                        {reviewer.name}
+                      </span>
+                      <span className='text-sm font-normal'>
+                        {reviewer.place}
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    onClick={() => togglePlay(reviewer.id)}
+                    className=' absolute bottom-7 right-8 cursor-pointer bg-white rounded-2xl w-14 h-14 '
+                  ></div>
+                </div>
               ) : (
                 <div className='relative w-[350px] h-[500px]'>
                   <Image

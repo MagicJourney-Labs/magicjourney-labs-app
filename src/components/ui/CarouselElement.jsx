@@ -3,21 +3,16 @@ import 'react-multi-carousel/lib/styles.css';
 
 const CarouselElement = ({ children }) => {
   const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 3,
     },
     tablet: {
-      breakpoint: { max: 1380, min: 464 },
+      breakpoint: { max: 1200, min: 464 },
       items: 2,
     },
     mobile: {
-      breakpoint: { max: 1125, min: 0 },
+      breakpoint: { max: 850, min: 0 },
       items: 1,
     },
   };
@@ -27,13 +22,11 @@ const CarouselElement = ({ children }) => {
       draggable={true}
       keyBoardControl={true}
       responsive={responsive}
-      focusOnSelect={true}
-      centerMode={true}
-      ssr={true} // means to render carousel on server-side.
-      infinite={true}
+      ssr={true}
+      //   infinite={false}
       showDots={false}
       containerClass=''
-      itemClass='px-4 lg:px-2'
+      itemClass=''
     >
       {children}
     </Carousel>

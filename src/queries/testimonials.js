@@ -6,7 +6,7 @@ const allTestimonials = `{
         }
         subtitle
         title
-        reviewers(last: 3) {
+        reviewers {
             id
             name
             place
